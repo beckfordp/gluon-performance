@@ -1,0 +1,1 @@
+Perf 3b Phase 3 task 1: scripts/check-obs-logs.sh — ES gluon-logs-* terms agg on service.name: all 8 services with docs and trace_id docs; Kibana data view gluon-logs exists. trace_id comes from the span exporter's text lines (smoke only hits /health/ready, which logs nothing else). Red before ES exists.
