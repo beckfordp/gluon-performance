@@ -1,0 +1,1 @@
+Phase 1 verification (Build, CI and remote). Automated: scripts/verify-phase1.sh -> local 'sbt scalafmtCheck Test/scalafmtCheck test Gatling/compile' green (1 test), origin = beckfordp/gluon-performance, latest main CI run completed/success. Manual walkthrough replaced by the script (prompting off, .claude/prompt-off).
