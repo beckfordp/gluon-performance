@@ -10,8 +10,8 @@ Gluon-repo commits need user approval (prompting on there); perf-repo commits au
 - [x] Task: Conductor - User Manual Verification 'Phase 1: Container image' (Protocol in workflow.md)
 
 ## Phase 2: Job manifest (PERF-2.1, perf repo)
-- [~] Task: `k8s/perf-job.yaml` template (`${JOB_NAME}`, `${SIMULATION}`, `${PERF_PROFILE}`) — pullPolicy Never, backoffLimit 0, ttlSecondsAfterFinished 600, emptyDir `/results`, resources 2000m/1Gi request=limit, JAVA_OPTS MaxRAMPercentage=75, in-cluster `<SERVICE>_URL`s
-- [ ] Task: `kubectl apply --dry-run=server` check script + README in-cluster section
+- [x] Task: `k8s/perf-job.yaml` template (+ `scripts/render-job.sh`) (`${JOB_NAME}`, `${SIMULATION}`, `${PERF_PROFILE}`) — pullPolicy Never, backoffLimit 0, ttlSecondsAfterFinished 600, emptyDir `/results`, resources 2000m/1Gi request=limit, JAVA_OPTS MaxRAMPercentage=75, in-cluster `<SERVICE>_URL`s 0c7a782
+- [~] Task: `kubectl apply --dry-run=server` check script + README in-cluster section
 - [ ] Task: Conductor - User Manual Verification 'Phase 2: Job manifest' (Protocol in workflow.md)
 
 ## Phase 3: bin/run-perf (PERF-2.2, gluon)
