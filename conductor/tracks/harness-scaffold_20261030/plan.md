@@ -19,7 +19,7 @@
 - [x] Task: Conductor - User Manual Verification 'Phase 3: Trace-linked requests' (Protocol in workflow.md)
 
 ## Phase 4: Smoke simulation (PERF-1.3)
-- [~] Task: `scripts/port-forward.sh up|down` — port-forward all 8 services from `gluon-local` to config-default ports (logs to file, no tail pipes)
-- [ ] Task: `SmokeSimulation` — `GET /health/ready` per service, 1 user, trace-linked, `failedRequests.count.is(0)`
+- [x] Task: `scripts/port-forward.sh up|down` — port-forward all 8 services from `gluon-local` to config-default ports (logs to file, no tail pipes) fffb35a
+- [~] Task: `SmokeSimulation` — `GET /health/ready` per service, 1 user, trace-linked, `failedRequests.count.is(0)`
 - [ ] Task: run against local cluster; confirm HTML report + trace ids in log; README run instructions updated
 - [ ] Task: Conductor - User Manual Verification 'Phase 4: Smoke simulation' (Protocol in workflow.md)
