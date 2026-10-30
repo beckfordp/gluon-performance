@@ -37,7 +37,21 @@ k8s Job via Gluon's `bin/run-perf` (Performance 2), since port-forwards bottlene
 results.
 
 ```
+scripts/port-forward.sh up                          # all 8 services -> localhost:18080-18087
 sbt "Gatling/testOnly gluon.perf.SmokeSimulation"
+scripts/port-forward.sh down
 ```
 
-HTML reports are written to `target/gatling/`.
+- HTML report: `target/gatling/<simulation>-<timestamp>/index.html`
+- Trace ids: `target/gatling/trace-ids.log`, one line per request
+  (`trace request="..." status=... trace_id=...`). Look a slow request up in
+  Tempo by `trace_id`; services log their spans under the same id.
+
+### Configuration (env vars)
+
+| Variable | Default | Meaning |
+|---|---|---|
+| `<SERVICE>_URL` (`ORDER_URL`, `PAYMENT_URL`, `INVENTORY_URL`, `USER_URL`, `CATALOG_URL`, `FULFILMENT_URL`, `CART_URL`, `NOTIFICATION_URL`) | `http://localhost:<port>` (18080-18087, matching `scripts/port-forward.sh`) | Service base URL |
+| `PERF_PROFILE` | `smoke` | Load profile: `smoke`, `baseline`, `december-ramp`, `black-friday-spike`, `last-posting-day`, `soak` (shapes land in Performance 7) |
+
+Invalid values fail the run at startup, listing every error.
