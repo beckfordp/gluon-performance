@@ -4,8 +4,6 @@ This file tracks all major tracks for the project.
 
 ---
 
-- [x] **Track: Performance 1: Harness scaffold**
-  *Link: [./tracks/harness-scaffold_20261030/](./tracks/harness-scaffold_20261030/)*
 
 ---
 
