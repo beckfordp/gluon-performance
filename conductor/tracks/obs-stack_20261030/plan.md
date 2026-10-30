@@ -49,8 +49,8 @@ tests, as with run-validity.
 - [x] Task: Filebeat DaemonSet (RBAC, hostPath /var/log/containers, autodiscover on
       gluon-local, JSON decode, service.name from the `app` label). gluon 8c577cb
       Also dissects span-exporter lines into trace_id/span_id/span_name.
-- [~] Task: The kibana-setup Job (data view, default index, saved search), run by
-      `bin/obs up`.
+- [x] Task: The kibana-setup Job (data view, default index, saved search), run by
+      `bin/obs up`. gluon 98fae83
 - [ ] Task: Conductor - User Manual Verification 'Phase 3' (Protocol in workflow.md).
       `verify-perf3b-phase3.sh`
 
