@@ -23,3 +23,6 @@
 - [x] Task: `SmokeSimulation` — `GET /health/ready` per service, 1 user, trace-linked, `failedRequests.count.is(0)` ce4e48d
 - [x] Task: run against local cluster; confirm HTML report + trace ids in log; README run instructions updated a5c1eba
 - [x] Task: Conductor - User Manual Verification 'Phase 4: Smoke simulation' (Protocol in workflow.md)
+
+## Phase: Review Fixes
+- [x] Task: Apply review suggestions 0c28145
