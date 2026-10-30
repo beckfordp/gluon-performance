@@ -5,7 +5,7 @@ that fails before the change and passes after. Each check goes under
 `tests/performance/scripts/check-obs-*.sh`. There's a pure helper with bash fixture
 tests, as with run-validity.
 
-## Phase 1: Skeleton, budget and bin/obs
+## Phase 1: Skeleton, budget and bin/obs [checkpoint: 8ec30a8]
 - [x] Task: `bin/lib/obs-budget.sh` + `bin/test/obs-budget-test.sh` (fixture tests
       first). It sums container memory limits from `kubectl get pods -o json` for the
       obs stack and for the namespace, and fails if the stack is over 3Gi or the total is
@@ -15,11 +15,11 @@ tests, as with run-validity.
       and a budget note in `environments/local/README.md`. gluon c00ba21
 - [x] Task: `bin/obs up|down|status`: preflight, apply, wait, URLs, budget check.
       `scripts/check-obs-cli.sh` first; it fails on usage and preflight cases. gluon 1bd924c, perf 81c9b22
-- [ ] Task: Conductor - User Manual Verification 'Phase 1' (Protocol in workflow.md).
-      `scripts/verify-perf3b-phase1.sh`
+- [x] Task: Conductor - User Manual Verification 'Phase 1' (Protocol in workflow.md).
+      `scripts/verify-perf3b-phase1.sh` 8ec30a8
 
 ## Phase 2: Prometheus + exporters (PERF-3.1)
-- [ ] Task: `check-obs-targets.sh` first: it queries `/api/v1/targets` and requires each
+- [~] Task: `check-obs-targets.sh` first: it queries `/api/v1/targets` and requires each
       expected job to be `up`.
 - [ ] Task: Prometheus Deployment, ServiceAccount/RBAC, ConfigMap (k8s SD on `metrics`
       port, cAdvisor via node proxy, exporter jobs) and a LoadBalancer on :9092.
