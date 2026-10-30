@@ -1,0 +1,1 @@
+Phase 1 verification (Perf 3b): scripts/verify-perf3b-phase1.sh PASS — obs-budget 7 fixtures, bin/obs CLI 6 cases, kustomize builds, bin/obs status/up/down clean on gluon-local (obs 0Gi, namespace 7.31Gi). Script replaces manual walkthrough (prompting off).
