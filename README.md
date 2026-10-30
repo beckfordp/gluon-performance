@@ -47,6 +47,28 @@ scripts/port-forward.sh down
   (`trace request="..." status=... trace_id=...`). Look a slow request up by
   `trace_id` in the services' span logs (Tempo from Performance 5).
 
+### In-cluster runs
+
+Real runs happen in-cluster. The image (`sbt Docker/publishLocal` →
+`gluon-performance:latest`, straight into OrbStack's docker) packages the
+simulations with Gatling's own launcher. `k8s/perf-job.yaml` runs one simulation
+as a Job in `gluon-local`, with 2000m CPU / 1Gi and in-cluster service URLs.
+`scripts/render-job.sh <job-name> <simulation> [profile]` fills in the template.
+
+Gluon's `bin/run-perf <simulation> [profile]` drives the whole run: launch,
+wait, copy results out, delete the Job. A finished pod can't be `kubectl cp`'d,
+so the container waits after the run (`src/universal/bin/run-simulation.sh`):
+
+| File in `/results` | Meaning |
+|---|---|
+| `EXIT_CODE` | Gatling's exit status: 0 ok, 2 assertions failed, 1 error |
+| `DONE` | Written last; the run is over |
+| `COPIED` | Touched by `run-perf` after copying; the container exits then, or after `COPY_TIMEOUT` (600s) |
+
+Checks: `scripts/check-image-layout.sh` (staged image contents),
+`scripts/check-image-run.sh` (local `docker run` against port-forwards),
+`scripts/check-job-manifest.sh` (server-side dry run of the Job).
+
 ### Configuration (env vars)
 
 | Variable | Default | Meaning |
