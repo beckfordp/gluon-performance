@@ -10,9 +10,9 @@ PROM="${PROM_URL:-http://localhost:9092}"
 # job -> expected number of targets
 EXPECTED="
 gluon-services 8
-kubernetes-cadvisor 1
+cadvisor 1
 kube-state-metrics 1
-postgres 7
+postgres 6
 redis 3
 kafka-exporter 1
 kafka-connect 1
