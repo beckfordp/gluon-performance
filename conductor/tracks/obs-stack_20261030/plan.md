@@ -21,9 +21,13 @@ tests, as with run-validity.
 ## Phase 2: Prometheus + exporters (PERF-3.1)
 - [x] Task: `check-obs-targets.sh` first: it queries `/api/v1/targets` and requires each
       expected job to be `up`. 7b174a5
-- [~] Task: Prometheus Deployment, ServiceAccount/RBAC, ConfigMap (k8s SD on `metrics`
-      port, cAdvisor via node proxy, exporter jobs) and a LoadBalancer on :9092.
-- [ ] Task: kube-state-metrics (namespace-scoped RBAC).
+- [x] Task: Prometheus Deployment, ServiceAccount/RBAC, ConfigMap (k8s SD on `metrics`
+      port, cAdvisor via node proxy, exporter jobs) and a LoadBalancer on :9092. gluon 2db74c7
+      Deviation: OrbStack's kubelet cAdvisor exports no container series (Docker via
+      cri-dockerd), so a cAdvisor DaemonSet in raw-cgroup mode instead: least privilege
+      (user's choice): unprivileged, nobody, read-only, only /sys/fs/cgroup mounted.
+      Pod-level series keyed by `pod_uid`. Also: 6 Postgres, not 7 (cart has none).
+- [~] Task: kube-state-metrics (namespace-scoped RBAC).
 - [ ] Task: postgres_exporter (multi-target, 7 DBs, credentials from the existing
       secrets) and redis_exporter (multi-target, 3 instances).
 - [ ] Task: kafka-exporter, plus the Kafka Connect JMX exporter javaagent (initContainer
