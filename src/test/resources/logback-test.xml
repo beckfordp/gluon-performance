@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+  <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>%d{HH:mm:ss.SSS} [%-5level] %logger{15} - %msg%n%rEx</pattern>
+    </encoder>
+    <immediateFlush>false</immediateFlush>
+  </appender>
+
+  <!-- One line per request: request name, status, trace id (gluon.perf.Traced). -->
+  <appender name="TRACES" class="ch.qos.logback.core.FileAppender">
+    <file>target/gatling/trace-ids.log</file>
+    <append>false</append>
+    <encoder>
+      <pattern>%d{HH:mm:ss.SSS} %msg%n</pattern>
+    </encoder>
+  </appender>
+
+  <logger name="gluon.perf.trace" level="INFO" additivity="false">
+    <appender-ref ref="TRACES" />
+    <appender-ref ref="CONSOLE" />
+  </logger>
+
+  <root level="WARN">
+    <appender-ref ref="CONSOLE" />
+  </root>
+
+</configuration>
