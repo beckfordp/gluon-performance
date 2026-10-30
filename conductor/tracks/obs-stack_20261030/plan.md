@@ -18,7 +18,7 @@ tests, as with run-validity.
 - [x] Task: Conductor - User Manual Verification 'Phase 1' (Protocol in workflow.md).
       `scripts/verify-perf3b-phase1.sh` 8ec30a8
 
-## Phase 2: Prometheus + exporters (PERF-3.1)
+## Phase 2: Prometheus + exporters (PERF-3.1) [checkpoint: 067f6ad]
 - [x] Task: `check-obs-targets.sh` first: it queries `/api/v1/targets` and requires each
       expected job to be `up`. 7b174a5
 - [x] Task: Prometheus Deployment, ServiceAccount/RBAC, ConfigMap (k8s SD on `metrics`
@@ -35,12 +35,12 @@ tests, as with run-validity.
       the one change outside obs/. The agent is inert when Prometheus isn't scraping. gluon f8a2868
       Found: connect-configs/connect-status had cleanup.policy=delete, so a Connect
       restart failed; altered to compact on the live broker. Root cause open (follow-up).
-- [ ] Task: Conductor - User Manual Verification 'Phase 2' (Protocol in workflow.md).
+- [x] Task: Conductor - User Manual Verification 'Phase 2' (Protocol in workflow.md).
       `verify-perf3b-phase2.sh`: all targets up, a smoke run, then non-zero p99 via
-      `histogram_quantile` per service.
+      `histogram_quantile` per service. 067f6ad
 
 ## Phase 3: Logs — ES, Kibana, Filebeat (PERF-3.2)
-- [ ] Task: `check-obs-logs.sh` first: ES `gluon-logs-*` holds docs for all 8
+- [~] Task: `check-obs-logs.sh` first: ES `gluon-logs-*` holds docs for all 8
       `service.name` values, at least one with `trace_id`, and the Kibana data view
       `gluon-logs` exists.
 - [ ] Task: Elasticsearch (single-node, heap 512m, limit ≤1.2Gi) and Kibana
