@@ -4,8 +4,6 @@ This file tracks all major tracks for the project.
 
 ---
 
-- [x] **Track: Performance 2: Run in-cluster**
-  *Link: [./tracks/run-in-cluster_20261030/](./tracks/run-in-cluster_20261030/)*
 
 ---
 
