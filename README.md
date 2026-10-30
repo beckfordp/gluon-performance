@@ -65,6 +65,23 @@ so the container waits after the run (`src/universal/bin/run-simulation.sh`):
 | `DONE` | Written last; the run is over |
 | `COPIED` | Touched by `run-perf` after copying; the container exits then, or after `COPY_TIMEOUT` (600s) |
 
+#### Run validity
+
+`bin/run-perf` also samples the OrbStack VM and the Gatling pod during the run,
+and writes `validity.txt` next to the report (gluon `bin/lib/run-validity.sh`,
+PLAN.md's laptop-budget rules):
+
+| Rule | Invalid when |
+|---|---|
+| `vm_cpu_p95` | VM CPU p95 ≥ 80% (the host, not the pods, saturated) |
+| `vm_mem_available_min` | MemAvailable < 10% of MemTotal |
+| `vm_swap_growth` | swap use grew > 1MB |
+| `gatling_throttled` | Gatling pod throttled ≥ 5% of CFS periods (SKIP for runs < 60s) |
+| `ac_power` | on battery at start or end |
+
+An invalid run exits **3** (Gatling's own non-zero code takes precedence). Treat
+its numbers as noise and re-run.
+
 Checks: `scripts/check-image-layout.sh` (staged image contents),
 `scripts/check-image-run.sh` (local `docker run` against port-forwards),
 `scripts/check-job-manifest.sh` (server-side dry run of the Job).
