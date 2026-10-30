@@ -80,9 +80,10 @@ tests, as with run-validity.
       - All Phase 2–4 checks green.
       - `bin/obs down` returns memory to the baseline.
       - A Grafana screenshot for the user (browser) is a manual extra.
-- [~] Task: Docs: gluon-performance README ("Watching a run"), the `environments/local`
-      budget table, and a CHANGELOG/PLAN tick (outside the track).
-- [ ] Task: Conductor - User Manual Verification 'Phase 5' (Protocol in workflow.md)
+- [x] Task: Docs: gluon-performance README ("Watching a run"), the `environments/local`
+      budget table, and a CHANGELOG/PLAN tick (outside the track). 0937d3b
+      (gluon 41591ef, 90bd0d2)
+- [~] Task: Conductor - User Manual Verification 'Phase 5' (Protocol in workflow.md)
 
 ## Risks
 - Kibana memory: 8.x wants about 700Mi–1Gi. If it OOMs, raise its limit and drop
