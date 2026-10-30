@@ -1,0 +1,1 @@
+Phase 3 verification (Perf 3b): scripts/verify-perf3b-phase3.sh PASS — smoke run's first Gatling trace id found in gluon-logs-* (Gatling report -> Kibana link works); check-obs-logs: all 8 services with docs and trace_id docs; Kibana data view gluon-logs present.
