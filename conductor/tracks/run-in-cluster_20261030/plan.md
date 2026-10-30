@@ -6,7 +6,7 @@ Gluon-repo commits need user approval (prompting on there); perf-repo commits au
 - [x] Task: add sbt-native-packager 1.11.1; enable JavaAppPackaging + DockerPlugin (base `eclipse-temurin:21-jre`, image `gluon-performance:latest`, mainClass `io.gatling.app.Gatling`); mappings add `Test/exportedProducts` + Test dependency jars to `lib/` and the script classpath 5d93ebd
 - [x] Task: write failing check (was `ImageLayoutSuite`; now `scripts/check-image-layout.sh`) — staged `Docker/stage` tree contains SmokeSimulation class jar, logback-test.xml, Gatling jars; entry script references `io.gatling.app.Gatling` 5d93ebd
 - [x] Task: `src/universal/bin/run-simulation.sh` (was `src/docker/entrypoint.sh`) — runs Gatling `-s $SIMULATION -rf /results`, writes EXIT_CODE + DONE, waits ≤ `COPY_TIMEOUT` (600s) for COPIED; trace log path configurable (`TRACE_LOG`, default target/gatling/trace-ids.log, `/results/trace-ids.log` in-cluster) 6701766
-- [~] Task: local check — `docker run` the image with `<SERVICE>_URL` at host port-forwards; report + EXIT_CODE + DONE appear
+- [x] Task: local check — `docker run` the image with `<SERVICE>_URL` at host port-forwards; report + EXIT_CODE + DONE appear ec93bad
 - [ ] Task: Conductor - User Manual Verification 'Phase 1: Container image' (Protocol in workflow.md)
 
 ## Phase 2: Job manifest (PERF-2.1, perf repo)
