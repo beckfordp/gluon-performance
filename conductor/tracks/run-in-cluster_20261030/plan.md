@@ -27,8 +27,8 @@ Gluon-repo commits need user approval (prompting on there); perf-repo commits au
 - [x] Task: Conductor - User Manual Verification 'Phase 4: Pod limits' (Protocol in workflow.md)
 
 ## Phase 5: Run validity (PERF-2.4, gluon)
-- [~] Task: write failing fixture tests `bin/test/run-validity-test.sh` — PASS fixture + one INVALID fixture each for CPU p95, PSI, swap growth, throttling, battery power
-- [ ] Task: `bin/lib/run-validity.sh` — `evaluate <samples-dir>` → validity.txt + exit status (0 valid, 3 invalid)
-- [ ] Task: sampler — background `docker run --rm --pid=host alpine` loop logging every 5s; Gatling pod `cpu.stat` start/end; pmset/top capture; wired into bin/run-perf with hard cleanup; exit 3 when invalid (assertion failure keeps Gatling's code)
-- [ ] Task: run `bin/run-perf SmokeSimulation` — validity.txt next to report, all PASS
+- [x] Task: write failing fixture tests `bin/test/run-validity-test.sh` — PASS fixture + one INVALID fixture each for CPU p95, memory (MemAvailable; PSI unavailable), swap growth, throttling, battery power (+ short-run SKIP, unplugged mid-run, sparse samples, missing cpu.stat) gluon@a71dfdf
+- [x] Task: `bin/lib/run-validity.sh` — `evaluate <samples-dir>` → validity.txt + exit status (0 valid, 3 invalid) gluon@a71dfdf
+- [x] Task: sampler — background `docker run --rm alpine` loop (no --pid=host needed) logging every 5s; Gatling pod `cpu.stat` start/end; pmset/top capture; wired into bin/run-perf with hard cleanup; exit 3 when invalid (assertion failure keeps Gatling's code) gluon@0865003
+- [x] Task: run `bin/run-perf SmokeSimulation` — validity.txt next to report, all PASS (throttling SKIP: run < 600 periods) gluon@0865003
 - [ ] Task: Conductor - User Manual Verification 'Phase 5: Run validity' (Protocol in workflow.md)

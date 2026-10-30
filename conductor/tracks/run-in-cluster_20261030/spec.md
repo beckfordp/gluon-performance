@@ -24,7 +24,7 @@ Run simulations as a k8s Job inside `gluon-local` (port-forwards bottleneck resu
   - Evaluation logic is a pure-ish shell function tested against fixture sample files
 
 ## Thresholds (from PLAN.md rules)
-VM CPU p95 < 80%; memory PSI `some avg10` max < 10; swap used doesn't grow; throttled periods < 5% of the Gatling pod's periods; on AC power.
+VM CPU p95 < 80%; memory: MemAvailable min ≥ 10% of MemTotal (amended 2026-10-30: OrbStack kernel has no PSI); swap used doesn't grow (≤ 1MB); throttled periods < 5% of the Gatling pod's periods, SKIP under 600 periods (amended: a short run's ratio is JVM start-up noise); on AC power at start and end.
 
 ## Non-Functional
 - Laptop budget holds: all limits fit ~12 GB inside the 16 GB VM
