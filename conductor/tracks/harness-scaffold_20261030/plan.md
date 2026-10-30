@@ -13,13 +13,13 @@
 - [x] Task: `Protocols.http` — one shared `HttpProtocol` (no base URL; requests use `GluonConfig.baseUrl`) e632653
 - [x] Task: Conductor - User Manual Verification 'Phase 2: Config and shared protocol' (Protocol in workflow.md)
 
-## Phase 3: Trace-linked requests (PERF-1.4)
+## Phase 3: Trace-linked requests (PERF-1.4) [checkpoint: a8b896a]
 - [x] Task: write failing tests — `Traceparent.generate` matches W3C format, non-zero ids, unique across calls; `Traceparent.parse` extracts id 686610f
 - [x] Task: implement `Traceparent` + Gatling helper: per-request `traceparent` header from session, trace id logged with request name + status 3e5f831
-- [ ] Task: Conductor - User Manual Verification 'Phase 3: Trace-linked requests' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 3: Trace-linked requests' (Protocol in workflow.md)
 
 ## Phase 4: Smoke simulation (PERF-1.3)
-- [ ] Task: `scripts/port-forward.sh up|down` — port-forward all 8 services from `gluon-local` to config-default ports (logs to file, no tail pipes)
+- [~] Task: `scripts/port-forward.sh up|down` — port-forward all 8 services from `gluon-local` to config-default ports (logs to file, no tail pipes)
 - [ ] Task: `SmokeSimulation` — `GET /health/ready` per service, 1 user, trace-linked, `failedRequests.count.is(0)`
 - [ ] Task: run against local cluster; confirm HTML report + trace ids in log; README run instructions updated
 - [ ] Task: Conductor - User Manual Verification 'Phase 4: Smoke simulation' (Protocol in workflow.md)
