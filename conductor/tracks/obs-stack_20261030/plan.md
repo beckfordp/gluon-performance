@@ -74,13 +74,13 @@ tests, as with run-validity.
       `verify-perf3b-phase4.sh` f273b38
 
 ## Phase 5: Exit criteria + docs (PERF-3.4)
-- [ ] Task: The full exit check, `verify-perf3b-phase5.sh`:
+- [x] Task: The full exit check, `verify-perf3b-phase5.sh`: 114e06a
       - `bin/obs up` from cold, with the budget check passing.
       - `bin/run-perf SmokeSimulation` exits 0, with validity valid.
       - All Phase 2–4 checks green.
       - `bin/obs down` returns memory to the baseline.
       - A Grafana screenshot for the user (browser) is a manual extra.
-- [ ] Task: Docs: gluon-performance README ("Watching a run"), the `environments/local`
+- [~] Task: Docs: gluon-performance README ("Watching a run"), the `environments/local`
       budget table, and a CHANGELOG/PLAN tick (outside the track).
 - [ ] Task: Conductor - User Manual Verification 'Phase 5' (Protocol in workflow.md)
 
