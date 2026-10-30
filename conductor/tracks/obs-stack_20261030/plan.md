@@ -55,10 +55,12 @@ tests, as with run-validity.
       `verify-perf3b-phase3.sh` 4ab6f8e
 
 ## Phase 4: Grafana + dashboards (PERF-3.3)
-- [~] Task: `check-obs-dashboards.sh` first. Through the Grafana API it checks that the
+- [x] Task: `check-obs-dashboards.sh` first. Through the Grafana API it checks that the
       datasource is healthy and that the 4 dashboards exist, and runs each panel's
-      queries for a non-empty `service` variable.
-- [ ] Task: Grafana (anonymous admin, datasource and dashboard provisioning via
+      queries for a non-empty `service` variable. d7e5294
+      (All queries must be valid; only core panels must have data: retries, breakers,
+      DLQ and lag stay empty until their events happen.)
+- [~] Task: Grafana (anonymous admin, datasource and dashboard provisioning via
       ConfigMaps from the repo JSON) and a LoadBalancer on :3000.
 - [ ] Task: Port purerest.json and purekafka.json with `service` templating and
       generalised panels.
