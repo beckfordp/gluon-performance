@@ -1,7 +1,5 @@
 package gluon.perf
 
-import java.util.random.RandomGenerator
-
 /** A sampled W3C Trace Context `traceparent` (version 00, flags 01).
   *
   * Gatling's built-in OpenTelemetry tracing is Enterprise-only (ADR 0019), so
@@ -20,15 +18,13 @@ object Traceparent {
   private val ZeroTrace = "0" * 32
   private val ZeroSpan = "0" * 16
 
-  /** The low bit of each id is forced on, so an id is never all-zero (W3C marks
-    * those invalid); 127 random bits per trace id is still ample.
+  /** Builds ids from caller-supplied random bits (pure: randomness is drawn at
+    * the Gatling session boundary, see `Traced`). The low bit of each id is
+    * forced on, so an id is never all-zero (W3C marks those invalid); 127
+    * random bits per trace id is still ample.
     */
-  def generate(random: RandomGenerator): Traceparent = {
-    val traceHigh = random.nextLong()
-    val traceLow = random.nextLong() | 1L
-    val span = random.nextLong() | 1L
-    Traceparent(f"$traceHigh%016x$traceLow%016x", f"$span%016x")
-  }
+  def fromBits(traceHigh: Long, traceLow: Long, span: Long): Traceparent =
+    Traceparent(f"$traceHigh%016x${traceLow | 1L}%016x", f"${span | 1L}%016x")
 
   def parse(header: String): Option[Traceparent] = header match {
     case Format(traceId, spanId)

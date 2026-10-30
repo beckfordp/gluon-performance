@@ -20,12 +20,15 @@ object Traced {
   private val StatusKey = "gluon.status"
 
   def get(name: String, url: String): ChainBuilder =
-    exec(
-      _.set(
+    exec { session =>
+      val random = ThreadLocalRandom.current()
+      session.set(
         Traceparent.HeaderName,
-        Traceparent.generate(ThreadLocalRandom.current()).header
+        Traceparent
+          .fromBits(random.nextLong(), random.nextLong(), random.nextLong())
+          .header
       )
-    )
+    }
       .exec(
         http(name)
           .get(url)

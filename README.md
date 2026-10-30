@@ -44,8 +44,8 @@ scripts/port-forward.sh down
 
 - HTML report: `target/gatling/<simulation>-<timestamp>/index.html`
 - Trace ids: `target/gatling/trace-ids.log`, one line per request
-  (`trace request="..." status=... trace_id=...`). Look a slow request up in
-  Tempo by `trace_id`; services log their spans under the same id.
+  (`trace request="..." status=... trace_id=...`). Look a slow request up by
+  `trace_id` in the services' span logs (Tempo from Performance 5).
 
 ### Configuration (env vars)
 

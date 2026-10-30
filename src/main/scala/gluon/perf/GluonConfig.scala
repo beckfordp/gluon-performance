@@ -1,7 +1,6 @@
 package gluon.perf
 
-import java.net.URI
-import scala.util.Try
+import java.net.{URI, URISyntaxException}
 
 /** An absolute http(s) base URL with no trailing slash. */
 final case class BaseUrl private (value: String)
@@ -9,7 +8,10 @@ final case class BaseUrl private (value: String)
 object BaseUrl {
   def parse(raw: String): Option[BaseUrl] = {
     val trimmed = raw.trim.stripSuffix("/")
-    Try(new URI(trimmed)).toOption
+    val uri =
+      try Some(new URI(trimmed))
+      catch { case _: URISyntaxException => None }
+    uri
       .filter(uri => Set("http", "https").contains(uri.getScheme))
       .filter(uri => Option(uri.getHost).exists(_.nonEmpty))
       .map(_ => new BaseUrl(trimmed))
@@ -69,11 +71,13 @@ object GluonConfig {
     val errors = urls.collect { case Left(e) =>
       e
     } ++ profile.left.toOption.toList
-    (errors, profile) match {
-      case (head :: tail, _) => Left(::(head, tail))
-      case (Nil, Right(p))   =>
-        Right(GluonConfig(urls.collect { case Right(u) => u }.toMap, p))
-      case (Nil, Left(e)) => Left(::(e, Nil))
+    errors match {
+      case head :: tail => Left(::(head, tail))
+      case Nil          =>
+        profile
+          .map(GluonConfig(urls.collect { case Right(u) => u }.toMap, _))
+          .left
+          .map(::(_, Nil))
     }
   }
 
