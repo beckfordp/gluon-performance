@@ -60,14 +60,17 @@ tests, as with run-validity.
       queries for a non-empty `service` variable. d7e5294
       (All queries must be valid; only core panels must have data: retries, breakers,
       DLQ and lag stay empty until their events happen.)
-- [~] Task: Grafana (anonymous admin, datasource and dashboard provisioning via
-      ConfigMaps from the repo JSON) and a LoadBalancer on :3000.
-- [ ] Task: Port purerest.json and purekafka.json with `service` templating and
-      generalised panels.
-- [ ] Task: New "Gluon pods" dashboard (CPU/mem vs limit, throttled %, restarts,
-      OOMKills).
-- [ ] Task: New "Gluon infra" dashboard (Postgres, Redis, Kafka lag, Connect/Debezium).
-- [ ] Task: Conductor - User Manual Verification 'Phase 4' (Protocol in workflow.md).
+- [x] Task: Grafana (anonymous admin, datasource and dashboard provisioning via
+      ConfigMaps from the repo JSON) and a LoadBalancer on :3000. gluon c2333b3
+      (Deviation: Grafana 13 allows only an anonymous Viewer; viewers can use Explore,
+      admin/admin logs in for edits.)
+- [x] Task: Port purerest.json and purekafka.json with `service` templating and
+      generalised panels. gluon 1394f4b
+- [x] Task: New "Gluon pods" dashboard (CPU/mem vs limit, throttled %, restarts,
+      OOMKills). gluon 65917ed
+- [x] Task: New "Gluon infra" dashboard (Postgres, Redis, Kafka lag, Connect/Debezium). gluon 3c317fd
+      (Kafka consumer-group lag went on gluon-kafka, beside purekafka's own lag.)
+- [~] Task: Conductor - User Manual Verification 'Phase 4' (Protocol in workflow.md).
       `verify-perf3b-phase4.sh`
 
 ## Phase 5: Exit criteria + docs (PERF-3.4)
