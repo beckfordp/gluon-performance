@@ -32,3 +32,6 @@ Gluon-repo commits need user approval (prompting on there); perf-repo commits au
 - [x] Task: sampler — background `docker run --rm alpine` loop (no --pid=host needed) logging every 5s; Gatling pod `cpu.stat` start/end; pmset/top capture; wired into bin/run-perf with hard cleanup; exit 3 when invalid (assertion failure keeps Gatling's code) gluon@0865003
 - [x] Task: run `bin/run-perf SmokeSimulation` — validity.txt next to report, all PASS (throttling SKIP: run < 600 periods) gluon@0865003
 - [x] Task: Conductor - User Manual Verification 'Phase 5: Run validity' (Protocol in workflow.md)
+
+## Phase: Review Fixes
+- [x] Task: Apply review suggestions 769a6eb gluon@0857654 (Redis maxmemory deferred to Performance 7 backlog)
