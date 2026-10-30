@@ -44,9 +44,9 @@ tests, as with run-validity.
       `service.name` values, at least one with `trace_id`, and the Kibana data view
       `gluon-logs` exists. 72e99d9 (trace_id parsed from span-exporter lines:
       app code logs nothing on /health/ready, the smoke's only endpoint)
-- [~] Task: Elasticsearch (single-node, heap 512m, limit ≤1.2Gi) and Kibana
-      (LoadBalancer :5601).
-- [ ] Task: Filebeat DaemonSet (RBAC, hostPath /var/log/containers, autodiscover on
+- [x] Task: Elasticsearch (single-node, heap 512m, limit ≤1.2Gi) and Kibana
+      (LoadBalancer :5601). gluon 0c70a57
+- [~] Task: Filebeat DaemonSet (RBAC, hostPath /var/log/containers, autodiscover on
       gluon-local, JSON decode, service.name from the `app` label).
 - [ ] Task: The kibana-setup Job (data view, default index, saved search), run by
       `bin/obs up`.
