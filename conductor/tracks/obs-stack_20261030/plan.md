@@ -30,9 +30,11 @@ tests, as with run-validity.
 - [x] Task: kube-state-metrics (namespace-scoped RBAC). gluon 8e0bd5e
 - [x] Task: postgres_exporter (multi-target, 6 DBs, credentials from the existing
       secrets) and redis_exporter (multi-target, 3 instances). gluon 5903bc3
-- [~] Task: kafka-exporter, plus the Kafka Connect JMX exporter javaagent (initContainer
+- [x] Task: kafka-exporter, plus the Kafka Connect JMX exporter javaagent (initContainer
       + JMX rules for connect and Debezium). This edits `local-infra/kafka-connect.yaml`,
-      the one change outside obs/. The agent is inert when Prometheus isn't scraping.
+      the one change outside obs/. The agent is inert when Prometheus isn't scraping. gluon f8a2868
+      Found: connect-configs/connect-status had cleanup.policy=delete, so a Connect
+      restart failed; altered to compact on the live broker. Root cause open (follow-up).
 - [ ] Task: Conductor - User Manual Verification 'Phase 2' (Protocol in workflow.md).
       `verify-perf3b-phase2.sh`: all targets up, a smoke run, then non-zero p99 via
       `histogram_quantile` per service.
