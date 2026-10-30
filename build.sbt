@@ -9,7 +9,7 @@ val munitVersion = "1.3.6"
 // simulations live in src/test, where gatling-sbt's Gatling config finds them.
 lazy val root = project
   .in(file("."))
-  .enablePlugins(GatlingPlugin)
+  .enablePlugins(GatlingPlugin, JavaAppPackaging, DockerPlugin)
   .settings(
     name := "gluon-performance",
     scalaVersion := scala2Version,
@@ -27,5 +27,38 @@ lazy val root = project
       "io.gatling.highcharts" % "gatling-charts-highcharts" % gatlingVersion,
       "io.gatling" % "gatling-test-framework" % gatlingVersion,
       "org.scalameta" %% "munit" % munitVersion % Test
-    )
+    ),
+    // In-cluster image (PERF-2.1). Simulations stay in src/test, so the Test
+    // jar (classes + logback-test.xml) and Test-only dependency jars are added
+    // to the staged lib/ and launcher classpath; the launcher runs Gatling's
+    // own main rather than an app main.
+    Compile / mainClass := Some("io.gatling.app.Gatling"),
+    Compile / discoveredMainClasses := Seq.empty,
+    // native-packager collects every packaged artifact of this project, which
+    // gatling-sbt extends with its Gatling Enterprise package (fails: no
+    // simulations in src/it). Only the main jar belongs in the image.
+    projectDependencyArtifacts := Seq(
+      Attributed
+        .blank((Compile / packageBin).value)
+        .put(moduleID.key, projectID.value)
+        .put(artifact.key, (Compile / packageBin / artifact).value)
+    ),
+    Universal / mappings ++= {
+      val compileJars = (Compile / dependencyClasspath).value.map(_.data).toSet
+      val testOnlyJars =
+        (Test / dependencyClasspath).value.map(_.data).filterNot(compileJars)
+          .filter(f => f.isFile && f.getName.endsWith(".jar"))
+      ((Test / packageBin).value -> s"lib/${name.value}-tests.jar") +:
+        testOnlyJars.map(f => f -> s"lib/${f.getName}")
+    },
+    scriptClasspath ++= {
+      val compileJars = (Compile / dependencyClasspath).value.map(_.data).toSet
+      s"${name.value}-tests.jar" +:
+        (Test / dependencyClasspath).value.map(_.data).filterNot(compileJars)
+          .filter(f => f.isFile && f.getName.endsWith(".jar"))
+          .map(_.getName)
+    },
+    dockerBaseImage := "eclipse-temurin:21-jre",
+    Docker / packageName := "gluon-performance",
+    dockerUpdateLatest := true
   )
