@@ -1,0 +1,1 @@
+Task: placeholder munit test + Gatling/compile (PERF-1.1). Added src/test/scala/gluon/perf/BuildSmokeSuite.scala proving munit wiring; full check 'sbt scalafmtCheck Test/scalafmtCheck test Gatling/compile' green (1 test passed). Also fixed -Wunused:all -> -Wunused:_ (2.13 rejects 'all') in a separate commit. Placeholder removed in Phase 2.
