@@ -1,0 +1,1 @@
+Task: manifest check + README (PERF-2.1). scripts/check-job-manifest.sh: render + kubectl apply --dry-run=server (no Job created), asserts no unrendered placeholders and profile substituted, and render-job.sh rejects unsafe job/simulation/profile input. README: In-cluster runs section (image, Job, render-job.sh, bin/run-perf, wait-for-copy files table, check scripts).
