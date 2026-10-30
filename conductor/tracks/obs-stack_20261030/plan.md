@@ -6,11 +6,11 @@ that fails before the change and passes after. Each check goes under
 tests, as with run-validity.
 
 ## Phase 1: Skeleton, budget and bin/obs
-- [ ] Task: `bin/lib/obs-budget.sh` + `bin/test/obs-budget-test.sh` (fixture tests
+- [x] Task: `bin/lib/obs-budget.sh` + `bin/test/obs-budget-test.sh` (fixture tests
       first). It sums container memory limits from `kubectl get pods -o json` for the
       obs stack and for the namespace, and fails if the stack is over 3Gi or the total is
-      over 11Gi (12Gi minus Gatling's 1Gi).
-- [ ] Task: `infra/k8s/observability/` skeleton: a kustomization or directory apply, a
+      over 11Gi (12Gi minus Gatling's 1Gi). gluon f1a1721
+- [~] Task: `infra/k8s/observability/` skeleton: a kustomization or directory apply, a
       common `app.kubernetes.io/part-of: gluon-obs` label (so `down` deletes by label),
       and a budget note in `environments/local/README.md`.
 - [ ] Task: `bin/obs up|down|status`: preflight, apply, wait, URLs, budget check.
