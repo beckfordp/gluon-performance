@@ -1,0 +1,1 @@
+Perf 2 Phase 3 verification (bin/run-perf). Automated: scripts/verify-perf2-phase3.sh -> gluon bin/run-perf SmokeSimulation in-cluster: EXIT_CODE 0, HTML report + 8/8 trace-linked 200s copied to target/gatling-k8s/, no gluon-performance Jobs left. bin/run-perf committed in gluon as c76367a (user-approved). Prompting off here.
