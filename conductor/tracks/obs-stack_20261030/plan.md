@@ -39,7 +39,7 @@ tests, as with run-validity.
       `verify-perf3b-phase2.sh`: all targets up, a smoke run, then non-zero p99 via
       `histogram_quantile` per service. 067f6ad
 
-## Phase 3: Logs — ES, Kibana, Filebeat (PERF-3.2)
+## Phase 3: Logs — ES, Kibana, Filebeat (PERF-3.2) [checkpoint: 4ab6f8e]
 - [x] Task: `check-obs-logs.sh` first: ES `gluon-logs-*` holds docs for all 8
       `service.name` values, at least one with `trace_id`, and the Kibana data view
       `gluon-logs` exists. 72e99d9 (trace_id parsed from span-exporter lines:
@@ -51,11 +51,11 @@ tests, as with run-validity.
       Also dissects span-exporter lines into trace_id/span_id/span_name.
 - [x] Task: The kibana-setup Job (data view, default index, saved search), run by
       `bin/obs up`. gluon 98fae83
-- [ ] Task: Conductor - User Manual Verification 'Phase 3' (Protocol in workflow.md).
-      `verify-perf3b-phase3.sh`
+- [x] Task: Conductor - User Manual Verification 'Phase 3' (Protocol in workflow.md).
+      `verify-perf3b-phase3.sh` 4ab6f8e
 
 ## Phase 4: Grafana + dashboards (PERF-3.3)
-- [ ] Task: `check-obs-dashboards.sh` first. Through the Grafana API it checks that the
+- [~] Task: `check-obs-dashboards.sh` first. Through the Grafana API it checks that the
       datasource is healthy and that the 4 dashboards exist, and runs each panel's
       queries for a non-empty `service` variable.
 - [ ] Task: Grafana (anonymous admin, datasource and dashboard provisioning via
