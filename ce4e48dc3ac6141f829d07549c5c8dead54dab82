@@ -1,0 +1,1 @@
+Task: SmokeSimulation (PERF-1.3). src/test/scala/gluon/perf/SmokeSimulation.scala: one scenario, atOnceUsers(1), Traced.get('ready <service>', <baseUrl>/health/ready) for all 8 Service.all, shared Protocols.http, assertion global.failedRequests.count.is(0). Config via GluonConfig.loadOrThrow().
