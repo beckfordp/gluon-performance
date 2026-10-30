@@ -1,0 +1,1 @@
+Phase 3 verification (Trace-linked requests). Automated: scripts/verify-phase3.sh -> scalafmtCheck, 16 tests pass incl. TraceparentSuite/TraceLogSuite, Traced compiles under Gatling/compile, gluon.perf.trace logger configured. Live trace ids deferred to Phase 4 smoke run (verify-phase4.sh). Prompting off.
