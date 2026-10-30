@@ -27,8 +27,8 @@ tests, as with run-validity.
       cri-dockerd), so a cAdvisor DaemonSet in raw-cgroup mode instead: least privilege
       (user's choice): unprivileged, nobody, read-only, only /sys/fs/cgroup mounted.
       Pod-level series keyed by `pod_uid`. Also: 6 Postgres, not 7 (cart has none).
-- [~] Task: kube-state-metrics (namespace-scoped RBAC).
-- [ ] Task: postgres_exporter (multi-target, 7 DBs, credentials from the existing
+- [x] Task: kube-state-metrics (namespace-scoped RBAC). gluon 8e0bd5e
+- [~] Task: postgres_exporter (multi-target, 7 DBs, credentials from the existing
       secrets) and redis_exporter (multi-target, 3 instances).
 - [ ] Task: kafka-exporter, plus the Kafka Connect JMX exporter javaagent (initContainer
       + JMX rules for connect and Debezium). This edits `local-infra/kafka-connect.yaml`,
