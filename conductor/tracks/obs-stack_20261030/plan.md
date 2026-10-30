@@ -46,9 +46,10 @@ tests, as with run-validity.
       app code logs nothing on /health/ready, the smoke's only endpoint)
 - [x] Task: Elasticsearch (single-node, heap 512m, limit ≤1.2Gi) and Kibana
       (LoadBalancer :5601). gluon 0c70a57
-- [~] Task: Filebeat DaemonSet (RBAC, hostPath /var/log/containers, autodiscover on
-      gluon-local, JSON decode, service.name from the `app` label).
-- [ ] Task: The kibana-setup Job (data view, default index, saved search), run by
+- [x] Task: Filebeat DaemonSet (RBAC, hostPath /var/log/containers, autodiscover on
+      gluon-local, JSON decode, service.name from the `app` label). gluon 8c577cb
+      Also dissects span-exporter lines into trace_id/span_id/span_name.
+- [~] Task: The kibana-setup Job (data view, default index, saved search), run by
       `bin/obs up`.
 - [ ] Task: Conductor - User Manual Verification 'Phase 3' (Protocol in workflow.md).
       `verify-perf3b-phase3.sh`
