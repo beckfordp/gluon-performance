@@ -1,11 +1,11 @@
 # Plan — Performance 1: Harness scaffold
 
-## Phase 1: Build, CI and remote (PERF-1.1)
+## Phase 1: Build, CI and remote (PERF-1.1) [checkpoint: 2dded54]
 - [x] Task: sbt build — `build.properties`, `plugins.sbt` (gatling-sbt, sbt-scalafmt, sbt-scoverage), `build.sbt` (Scala 2.13, Gatling 3.16.0, munit), `.scalafmt.conf`, `.gitignore` a98f769
 - [x] Task: placeholder munit test + `Gatling/compile` passes locally (`sbt scalafmtCheck Test/scalafmtCheck test Gatling/compile`) fcaf4bc
 - [x] Task: README (purpose, how to run smoke, link to gluon ADR 0019 / PLAN.md) 9f92f27
 - [x] Task: GitHub Actions CI (`.github/workflows/ci.yml`, temurin 21); push; CI green 8688847
-- [ ] Task: Conductor - User Manual Verification 'Phase 1: Build, CI and remote' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 1: Build, CI and remote' (Protocol in workflow.md)
 
 ## Phase 2: Config and shared protocol (PERF-1.2)
 - [ ] Task: write failing tests — `GluonConfig` parses env (base URL per service, profile), defaults for port-forward, accumulates errors for invalid URLs/unknown profile
