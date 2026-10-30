@@ -1,0 +1,1 @@
+Perf 2 Phase 2 verification (Job manifest). Automated: scripts/verify-perf2-phase2.sh -> check-job-manifest.sh PASS (server dry-run accepted, placeholders rendered, unsafe input rejected), README in-cluster section present. Prompting off.
