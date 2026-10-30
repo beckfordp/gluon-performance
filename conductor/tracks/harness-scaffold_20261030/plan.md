@@ -7,14 +7,14 @@
 - [x] Task: GitHub Actions CI (`.github/workflows/ci.yml`, temurin 21); push; CI green 8688847
 - [x] Task: Conductor - User Manual Verification 'Phase 1: Build, CI and remote' (Protocol in workflow.md)
 
-## Phase 2: Config and shared protocol (PERF-1.2)
+## Phase 2: Config and shared protocol (PERF-1.2) [checkpoint: dbe8f45]
 - [x] Task: write failing tests — `GluonConfig` parses env (base URL per service, profile), defaults for port-forward, accumulates errors for invalid URLs/unknown profile e9aae23
 - [x] Task: implement `GluonConfig` (pure: `Map[String,String] => Either[::[ConfigError], GluonConfig]`) + `Service` ADT e9aae23
 - [x] Task: `Protocols.http` — one shared `HttpProtocol` (no base URL; requests use `GluonConfig.baseUrl`) e632653
-- [ ] Task: Conductor - User Manual Verification 'Phase 2: Config and shared protocol' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 2: Config and shared protocol' (Protocol in workflow.md)
 
 ## Phase 3: Trace-linked requests (PERF-1.4)
-- [ ] Task: write failing tests — `Traceparent.generate` matches W3C format, non-zero ids, unique across calls; `Traceparent.traceId` extracts id
+- [~] Task: write failing tests — `Traceparent.generate` matches W3C format, non-zero ids, unique across calls; `Traceparent.traceId` extracts id
 - [ ] Task: implement `Traceparent` + Gatling helper: per-request `traceparent` header from session, trace id logged with request name + status
 - [ ] Task: Conductor - User Manual Verification 'Phase 3: Trace-linked requests' (Protocol in workflow.md)
 
