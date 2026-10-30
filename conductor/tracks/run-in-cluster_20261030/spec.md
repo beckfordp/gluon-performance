@@ -15,7 +15,7 @@ Run simulations as a k8s Job inside `gluon-local` (port-forwards bottleneck resu
   - Builds image if missing (`--build` forces), applies Job with unique name, waits for DONE, copies `/results` → `tests/performance/target/gatling-k8s/<sim>-<timestamp>/`, touches COPIED, deletes Job
   - Exits with the simulation's exit code (assertion failure fails the script); Job deleted on Ctrl-C/error
 - **PERF-2.3 Pod limits** (gluon)
-  - Chart default: request 250m/384Mi, limit 500m/384Mi; new `javaOpts` value (default `-XX:MaxRAMPercentage=75`) → `JAVA_OPTS`
+  - Chart default: request 250m/384Mi, limit 500m/384Mi; new `javaOpts` value (default `-XX:MaxRAMPercentage=40` — amended 2026-10-30 from 75%: services measured at 100–180Mi off-heap, so 75% of 384Mi would OOM) → `JAVA_OPTS`
   - local-infra: Postgres 256Mi/500m, Redis 64Mi/100m, Kafka 1Gi/1000m, Kafka Connect 1Gi/1000m, Apicurio 512Mi/500m, Apicurio UI 128Mi/200m; memory request = limit; one-shot Jobs (Debezium register, outbox-cleanup) small limits
   - Redeploy; every pod Ready and within limits
 - **PERF-2.4 Run validity** (gluon `bin/run-perf`)

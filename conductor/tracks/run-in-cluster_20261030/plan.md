@@ -20,10 +20,10 @@ Gluon-repo commits need user approval (prompting on there); perf-repo commits au
 - [x] Task: Conductor - User Manual Verification 'Phase 3: bin/run-perf' (Protocol in workflow.md)
 
 ## Phase 4: Pod limits (PERF-2.3, gluon)
-- [~] Task: chart — default resources 250m/384Mi request, 500m/384Mi limit; `javaOpts` value → `JAVA_OPTS` env in deployment.yaml; `helm template` check
-- [ ] Task: local-infra manifests — resources per budget on every container (Postgres ×6, Redis ×3, Kafka, Kafka Connect, Apicurio + UI, one-shot Jobs)
-- [ ] Task: budget check script — sums memory limits across `gluon-local` pods (≤ 12 Gi), every container has requests + limits
-- [ ] Task: redeploy (`bin/k8s-local-up`), all pods Ready, no OOMKilled after smoke run; re-register Debezium connectors if needed
+- [x] Task: chart — default resources 250m/384Mi request, 500m/384Mi limit; `javaOpts` value → `JAVA_OPTS` env in deployment.yaml; `helm template` check (javaOpts 40%, not 75%: measured 100–180Mi off-heap — user decision) gluon@30171cb
+- [x] Task: local-infra manifests — resources per budget on every container (Postgres ×6, Redis ×3, Kafka, Kafka Connect, Apicurio + UI, one-shot Jobs) + heap env for Kafka/Connect/Apicurio gluon@d18b184
+- [x] Task: budget check script — sums memory limits across `gluon-local` pods (≤ 12 Gi), every container has requests + limits b7e090c
+- [x] Task: redeploy (`bin/k8s-local-up`), all pods Ready, no OOMKilled after smoke run; re-register Debezium connectors if needed (k8s-local-up fix: gluon@7fd1bf3)
 - [ ] Task: Conductor - User Manual Verification 'Phase 4: Pod limits' (Protocol in workflow.md)
 
 ## Phase 5: Run validity (PERF-2.4, gluon)
