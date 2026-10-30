@@ -1,0 +1,1 @@
+Task: README (PERF-1.1). Added README.md: purpose + link to ADR 0019/PLAN.md, relative-numbers caveat, prerequisites (no GH Packages token), layout (src/main helpers, src/test simulations), build/test command, smoke run command (SmokeSimulation lands in Phase 4; port-forward details added then).
