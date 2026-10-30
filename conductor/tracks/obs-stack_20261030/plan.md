@@ -13,8 +13,8 @@ tests, as with run-validity.
 - [x] Task: `infra/k8s/observability/` skeleton: a kustomization or directory apply, a
       common `app.kubernetes.io/part-of: gluon-obs` label (so `down` deletes by label),
       and a budget note in `environments/local/README.md`. gluon c00ba21
-- [~] Task: `bin/obs up|down|status`: preflight, apply, wait, URLs, budget check.
-      `scripts/check-obs-cli.sh` first; it fails on usage and preflight cases.
+- [x] Task: `bin/obs up|down|status`: preflight, apply, wait, URLs, budget check.
+      `scripts/check-obs-cli.sh` first; it fails on usage and preflight cases. gluon 1bd924c, perf 81c9b22
 - [ ] Task: Conductor - User Manual Verification 'Phase 1' (Protocol in workflow.md).
       `scripts/verify-perf3b-phase1.sh`
 
