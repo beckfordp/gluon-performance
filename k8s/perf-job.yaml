@@ -1,0 +1,63 @@
+# One in-cluster simulation run (PERF-2.1), rendered by scripts/render-job.sh
+# and launched by gluon's bin/run-perf. Results stay in the pod's emptyDir
+# until run-perf copies them out (wait-for-copy, see run-simulation.sh).
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: ${JOB_NAME}
+  namespace: gluon-local
+  labels:
+    app.kubernetes.io/name: gluon-performance
+    gluon.perf/simulation: ${SIMULATION_LABEL}
+spec:
+  backoffLimit: 0
+  ttlSecondsAfterFinished: 600
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: gluon-performance
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: gatling
+          image: gluon-performance:latest
+          # Built into OrbStack's docker by `sbt Docker/publishLocal`; no registry.
+          imagePullPolicy: Never
+          env:
+            - name: SIMULATION
+              value: "${SIMULATION}"
+            - name: PERF_PROFILE
+              value: "${PERF_PROFILE}"
+            - name: JAVA_OPTS
+              value: "-XX:MaxRAMPercentage=75"
+            - name: ORDER_URL
+              value: http://order-service:8080
+            - name: PAYMENT_URL
+              value: http://payment-service:8080
+            - name: INVENTORY_URL
+              value: http://inventory-service:8080
+            - name: USER_URL
+              value: http://user-service:8080
+            - name: CATALOG_URL
+              value: http://catalog-service:8080
+            - name: FULFILMENT_URL
+              value: http://fulfilment-service:8080
+            - name: CART_URL
+              value: http://cart-service:8080
+            - name: NOTIFICATION_URL
+              value: http://notification-service:8080
+          # Laptop budget (gluon PLAN.md): request = limit, so the load
+          # generator is never starved or throttled below what it asked for.
+          resources:
+            requests:
+              cpu: 2000m
+              memory: 1Gi
+            limits:
+              cpu: 2000m
+              memory: 1Gi
+          volumeMounts:
+            - name: results
+              mountPath: /results
+      volumes:
+        - name: results
+          emptyDir: {}
