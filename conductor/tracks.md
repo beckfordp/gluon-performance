@@ -2,7 +2,7 @@
 
 This file tracks all major tracks for the project.
 
-- [~] **Track: Performance 3b: Observability stack in-cluster (PERF-3.1–3.4)**
+- [x] **Track: Performance 3b: Observability stack in-cluster (PERF-3.1–3.4)**
   *Link: [./tracks/obs-stack_20261030/](./tracks/obs-stack_20261030/)*
 
 ---
