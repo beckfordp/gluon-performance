@@ -1,0 +1,1 @@
+Phase 4 verification (Smoke simulation) = Performance 1 exit criteria. Automated: scripts/verify-phase4.sh -> port-forward up, SmokeSimulation 8/8 OK 0 KO, 'count of failed events is 0' true, HTML report present, 8/8 trace-linked status=200 lines in target/gatling/trace-ids.log, port-forwards torn down (trap). Prompting off.
