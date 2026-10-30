@@ -15,7 +15,7 @@
 
 ## Phase 3: Trace-linked requests (PERF-1.4)
 - [x] Task: write failing tests — `Traceparent.generate` matches W3C format, non-zero ids, unique across calls; `Traceparent.parse` extracts id 686610f
-- [~] Task: implement `Traceparent` + Gatling helper: per-request `traceparent` header from session, trace id logged with request name + status
+- [x] Task: implement `Traceparent` + Gatling helper: per-request `traceparent` header from session, trace id logged with request name + status 3e5f831
 - [ ] Task: Conductor - User Manual Verification 'Phase 3: Trace-linked requests' (Protocol in workflow.md)
 
 ## Phase 4: Smoke simulation (PERF-1.3)
