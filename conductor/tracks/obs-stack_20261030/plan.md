@@ -19,9 +19,9 @@ tests, as with run-validity.
       `scripts/verify-perf3b-phase1.sh` 8ec30a8
 
 ## Phase 2: Prometheus + exporters (PERF-3.1)
-- [~] Task: `check-obs-targets.sh` first: it queries `/api/v1/targets` and requires each
-      expected job to be `up`.
-- [ ] Task: Prometheus Deployment, ServiceAccount/RBAC, ConfigMap (k8s SD on `metrics`
+- [x] Task: `check-obs-targets.sh` first: it queries `/api/v1/targets` and requires each
+      expected job to be `up`. 7b174a5
+- [~] Task: Prometheus Deployment, ServiceAccount/RBAC, ConfigMap (k8s SD on `metrics`
       port, cAdvisor via node proxy, exporter jobs) and a LoadBalancer on :9092.
 - [ ] Task: kube-state-metrics (namespace-scoped RBAC).
 - [ ] Task: postgres_exporter (multi-target, 7 DBs, credentials from the existing
