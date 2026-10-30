@@ -73,7 +73,7 @@ tests, as with run-validity.
 - [x] Task: Conductor - User Manual Verification 'Phase 4' (Protocol in workflow.md).
       `verify-perf3b-phase4.sh` f273b38
 
-## Phase 5: Exit criteria + docs (PERF-3.4)
+## Phase 5: Exit criteria + docs (PERF-3.4) [checkpoint: 15b598d]
 - [x] Task: The full exit check, `verify-perf3b-phase5.sh`: 114e06a
       - `bin/obs up` from cold, with the budget check passing.
       - `bin/run-perf SmokeSimulation` exits 0, with validity valid.
@@ -83,7 +83,8 @@ tests, as with run-validity.
 - [x] Task: Docs: gluon-performance README ("Watching a run"), the `environments/local`
       budget table, and a CHANGELOG/PLAN tick (outside the track). 0937d3b
       (gluon 41591ef, 90bd0d2)
-- [~] Task: Conductor - User Manual Verification 'Phase 5' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 5' (Protocol in workflow.md)
+      `verify-perf3b-phase5.sh`
 
 ## Risks
 - Kibana memory: 8.x wants about 700Mi–1Gi. If it OOMs, raise its limit and drop
