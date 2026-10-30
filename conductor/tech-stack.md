@@ -26,7 +26,9 @@
 - munit for helper logic; Gatling DSL builders tested via `GatlingConfiguration.loadForTest()`
 
 ## Packaging / run
-- Container image (sbt-native-packager or plain Dockerfile — decided in PERF-2.1), run as a k8s Job in `gluon-local`, launched by gluon `bin/run-perf`
+- sbt-native-packager 1.11.1 (`JavaAppPackaging` + `DockerPlugin`, same as the services): `sbt Docker/publishLocal` → `gluon-performance:latest` on `eclipse-temurin:21-jre`, straight into OrbStack's docker. Simulations stay in `src/test`; the Test jar + Test-only deps are added to the image, launcher main is `io.gatling.app.Gatling`, JVM flags mirror gatling-sbt's fork options (JDK 21-safe subset). `projectDependencyArtifacts` narrowed to the main jar (gatling-sbt's Enterprise package otherwise breaks staging)
+- Entrypoint `src/universal/bin/run-simulation.sh`: wait-for-copy protocol (`/results/EXIT_CODE`, `DONE`, `COPIED`)
+- k8s Job template `k8s/perf-job.yaml` (2000m/1Gi, request = limit), rendered by `scripts/render-job.sh`, launched by gluon `bin/run-perf <simulation> [profile]`, which also samples run validity (gluon `bin/lib/run-validity.sh`)
 - Port-forwards for smoke runs only: `scripts/port-forward.sh up|down`, ports 18080–18087 (matching gshop's where they overlap)
 
 ## CI
