@@ -1,0 +1,1 @@
+Perf 3b P5 task 1: verify-perf3b-phase5.sh PASS — cold down/up (budget obs 2.97/3Gi, ns 10.28/11Gi), smoke RESULT valid, phase 2-4 verify scripts PASS, down returns ns to baseline 7.31Gi. Grafana screenshot left as manual extra.
