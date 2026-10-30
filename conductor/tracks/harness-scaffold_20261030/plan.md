@@ -4,7 +4,7 @@
 - [x] Task: sbt build — `build.properties`, `plugins.sbt` (gatling-sbt, sbt-scalafmt, sbt-scoverage), `build.sbt` (Scala 2.13, Gatling 3.16.0, munit), `.scalafmt.conf`, `.gitignore` a98f769
 - [x] Task: placeholder munit test + `Gatling/compile` passes locally (`sbt scalafmtCheck Test/scalafmtCheck test Gatling/compile`) fcaf4bc
 - [x] Task: README (purpose, how to run smoke, link to gluon ADR 0019 / PLAN.md) 9f92f27
-- [~] Task: GitHub Actions CI (`.github/workflows/ci.yml`, temurin 21); push; CI green
+- [x] Task: GitHub Actions CI (`.github/workflows/ci.yml`, temurin 21); push; CI green 8688847
 - [ ] Task: Conductor - User Manual Verification 'Phase 1: Build, CI and remote' (Protocol in workflow.md)
 
 ## Phase 2: Config and shared protocol (PERF-1.2)
