@@ -86,6 +86,31 @@ Checks: `scripts/check-image-layout.sh` (staged image contents),
 `scripts/check-image-run.sh` (local `docker run` against port-forwards),
 `scripts/check-job-manifest.sh` (server-side dry run of the Job).
 
+### Watching a run
+
+The observability stack is opt-in: gluon's `bin/obs up` deploys it into
+`gluon-local` (gluon `infra/k8s/observability`), and `bin/obs down` removes it.
+Bring it up before `bin/run-perf`, so Prometheus scrapes the whole run:
+
+| UI | URL | What's there |
+|---|---|---|
+| Grafana | http://localhost:3000 | Dashboards in folder `gluon`: **services (RED)** (rate, 5xx, p50/p95/p99, client calls, retries, breakers, DB), **Kafka consumers** (purekafka retries/breakers/DLQ, consumer-group lag), **pods** (CPU/memory vs limit, throttled %, restarts, OOMKills), **infrastructure** (Postgres, Redis, Connect/Debezium) |
+| Kibana | http://localhost:5601 | Data view `gluon-logs`: every service's logs, with `trace_id`/`span_id` |
+| Prometheus | http://localhost:9092 | Raw queries, `/targets` |
+
+Grafana is anonymous Viewer (Explore works); log in as admin/admin to edit,
+but dashboards come from the repo JSON, so UI edits are lost on restart.
+
+To go from a Gatling request to its logs: `bin/run-perf` writes
+`trace-ids.log` next to the report. Search Kibana for `trace_id:<id>` to get
+that request's span and log lines across services.
+
+Checks (stack up): `scripts/check-obs-targets.sh` (every scrape job up),
+`scripts/check-obs-logs.sh` (all 8 services' logs in Elasticsearch, with trace
+ids), `scripts/check-obs-dashboards.sh` (every panel query valid, core panels
+with data). `scripts/verify-perf3b-phase5.sh` runs the whole set from a cold
+start.
+
 ### Configuration (env vars)
 
 | Variable | Default | Meaning |
