@@ -1,0 +1,1 @@
+Perf 3b Phase 2 task 1: scripts/check-obs-targets.sh — /api/v1/targets on localhost:9092; per-job expected counts (gluon-services 8, cadvisor 1, kube-state-metrics 1, postgres 7, redis 3, kafka-exporter 1, kafka-connect 1, prometheus 1), all up. Red before the stack exists.
