@@ -1,0 +1,1 @@
+Phase 4 verification: scripts/verify-perf3b-phase4.sh PASS — obs up, smoke run, Grafana 13.0.2 healthy, datasource prometheus OK; gluon-red 10/gluon-kafka 8/gluon-pods 6/gluon-infra 12 panels, 0 bad queries, core panels have data. Budget obs 2.97Gi / ns 10.28Gi.
