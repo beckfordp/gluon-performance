@@ -1,0 +1,1 @@
+Phase 5 verification: scripts/verify-perf3b-phase5.sh PASS (cold up within budget, smoke valid, phases 2-4 PASS, down to 7.31Gi baseline). Grafana screenshot: manual extra, not taken.
