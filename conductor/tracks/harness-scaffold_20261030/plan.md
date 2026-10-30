@@ -21,5 +21,5 @@
 ## Phase 4: Smoke simulation (PERF-1.3)
 - [x] Task: `scripts/port-forward.sh up|down` — port-forward all 8 services from `gluon-local` to config-default ports (logs to file, no tail pipes) fffb35a
 - [x] Task: `SmokeSimulation` — `GET /health/ready` per service, 1 user, trace-linked, `failedRequests.count.is(0)` ce4e48d
-- [~] Task: run against local cluster; confirm HTML report + trace ids in log; README run instructions updated
+- [x] Task: run against local cluster; confirm HTML report + trace ids in log; README run instructions updated a5c1eba
 - [ ] Task: Conductor - User Manual Verification 'Phase 4: Smoke simulation' (Protocol in workflow.md)
