@@ -19,7 +19,7 @@ lazy val root = project
       "-feature",
       "-unchecked",
       "-Xlint",
-      "-Wunused:all",
+      "-Wunused:_",
       "-Xsource:3"
     ),
     libraryDependencies ++= Seq(
