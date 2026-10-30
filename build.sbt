@@ -20,7 +20,8 @@ lazy val root = project
       "-unchecked",
       "-Xlint",
       "-Wunused:_",
-      "-Xsource:3"
+      "-Xsource:3",
+      "-Xsource-features:case-apply-copy-access"
     ),
     libraryDependencies ++= Seq(
       "io.gatling.highcharts" % "gatling-charts-highcharts" % gatlingVersion,
