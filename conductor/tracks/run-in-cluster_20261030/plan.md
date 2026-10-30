@@ -15,8 +15,8 @@ Gluon-repo commits need user approval (prompting on there); perf-repo commits au
 - [x] Task: Conductor - User Manual Verification 'Phase 2: Job manifest' (Protocol in workflow.md)
 
 ## Phase 3: bin/run-perf (PERF-2.2, gluon)
-- [~] Task: `bin/run-perf <simulation> [profile] [--build]` — preflight (orbstack context, namespace, image present), Job name `perf-<sim>-<ts>`, apply, wait for pod Running then poll for DONE, kubectl cp `/results` → `tests/performance/target/gatling-k8s/<sim>-<ts>/`, touch COPIED, delete Job; trap deletes Job on error/interrupt; exit with EXIT_CODE
-- [ ] Task: run `bin/run-perf SmokeSimulation` in-cluster — 8/8 OK, report on disk, Job gone
+- [x] Task: `bin/run-perf <simulation> [profile] [--build]` — preflight (orbstack context, namespace, image present), Job name `perf-<sim>-<ts>`, apply, wait for pod Running then poll for DONE, kubectl cp `/results` → `tests/performance/target/gatling-k8s/<sim>-<ts>/`, touch COPIED, delete Job; trap deletes Job on error/interrupt; exit with EXIT_CODE gluon@c76367a
+- [x] Task: run `bin/run-perf SmokeSimulation` in-cluster — 8/8 OK, report on disk, Job gone gluon@c76367a
 - [ ] Task: Conductor - User Manual Verification 'Phase 3: bin/run-perf' (Protocol in workflow.md)
 
 ## Phase 4: Pod limits (PERF-2.3, gluon)
