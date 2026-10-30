@@ -19,3 +19,4 @@ scope: gluon `PLAN.md` "Performance". When ready, run `/conductor:newTrack <titl
 - Performance 9: Resilience experiments (failure sweep, latency injection, recovery, consumer faults, pod kill)
 - Performance 10: The Christmas Rush demo (spike, dispatch shortfall, trace walk, combined run)
 - Performance 11: Findings, SLOs and regression gates (assertions vs `BASELINES.md`)
+- Obs stack startup race: bin/obs up — Filebeat starts before ES ready (backoff delays logs ~2min); Grafana wedges on first boot (health probe 1s timeouts, sqlite lock, panels never load; pod restart fixes)
