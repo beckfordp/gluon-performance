@@ -9,13 +9,13 @@ Gluon-repo commits need user approval (prompting on there); perf-repo commits au
 - [x] Task: local check — `docker run` the image with `<SERVICE>_URL` at host port-forwards; report + EXIT_CODE + DONE appear ec93bad
 - [x] Task: Conductor - User Manual Verification 'Phase 1: Container image' (Protocol in workflow.md)
 
-## Phase 2: Job manifest (PERF-2.1, perf repo)
+## Phase 2: Job manifest (PERF-2.1, perf repo) [checkpoint: 21acda0]
 - [x] Task: `k8s/perf-job.yaml` template (+ `scripts/render-job.sh`) (`${JOB_NAME}`, `${SIMULATION}`, `${PERF_PROFILE}`) — pullPolicy Never, backoffLimit 0, ttlSecondsAfterFinished 600, emptyDir `/results`, resources 2000m/1Gi request=limit, JAVA_OPTS MaxRAMPercentage=75, in-cluster `<SERVICE>_URL`s 0c7a782
 - [x] Task: `kubectl apply --dry-run=server` check script + README in-cluster section 2bba8c8
-- [ ] Task: Conductor - User Manual Verification 'Phase 2: Job manifest' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 2: Job manifest' (Protocol in workflow.md)
 
 ## Phase 3: bin/run-perf (PERF-2.2, gluon)
-- [ ] Task: `bin/run-perf <simulation> [profile] [--build]` — preflight (orbstack context, namespace, image present), Job name `perf-<sim>-<ts>`, apply, wait for pod Running then poll for DONE, kubectl cp `/results` → `tests/performance/target/gatling-k8s/<sim>-<ts>/`, touch COPIED, delete Job; trap deletes Job on error/interrupt; exit with EXIT_CODE
+- [~] Task: `bin/run-perf <simulation> [profile] [--build]` — preflight (orbstack context, namespace, image present), Job name `perf-<sim>-<ts>`, apply, wait for pod Running then poll for DONE, kubectl cp `/results` → `tests/performance/target/gatling-k8s/<sim>-<ts>/`, touch COPIED, delete Job; trap deletes Job on error/interrupt; exit with EXIT_CODE
 - [ ] Task: run `bin/run-perf SmokeSimulation` in-cluster — 8/8 OK, report on disk, Job gone
 - [ ] Task: Conductor - User Manual Verification 'Phase 3: bin/run-perf' (Protocol in workflow.md)
 
