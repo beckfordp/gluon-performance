@@ -14,13 +14,13 @@ Gluon-repo commits need user approval (prompting on there); perf-repo commits au
 - [x] Task: `kubectl apply --dry-run=server` check script + README in-cluster section 2bba8c8
 - [x] Task: Conductor - User Manual Verification 'Phase 2: Job manifest' (Protocol in workflow.md)
 
-## Phase 3: bin/run-perf (PERF-2.2, gluon)
+## Phase 3: bin/run-perf (PERF-2.2, gluon) [checkpoint: 2124712]
 - [x] Task: `bin/run-perf <simulation> [profile] [--build]` — preflight (orbstack context, namespace, image present), Job name `perf-<sim>-<ts>`, apply, wait for pod Running then poll for DONE, kubectl cp `/results` → `tests/performance/target/gatling-k8s/<sim>-<ts>/`, touch COPIED, delete Job; trap deletes Job on error/interrupt; exit with EXIT_CODE gluon@c76367a
 - [x] Task: run `bin/run-perf SmokeSimulation` in-cluster — 8/8 OK, report on disk, Job gone gluon@c76367a
-- [ ] Task: Conductor - User Manual Verification 'Phase 3: bin/run-perf' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 3: bin/run-perf' (Protocol in workflow.md)
 
 ## Phase 4: Pod limits (PERF-2.3, gluon)
-- [ ] Task: chart — default resources 250m/384Mi request, 500m/384Mi limit; `javaOpts` value → `JAVA_OPTS` env in deployment.yaml; `helm template` check
+- [~] Task: chart — default resources 250m/384Mi request, 500m/384Mi limit; `javaOpts` value → `JAVA_OPTS` env in deployment.yaml; `helm template` check
 - [ ] Task: local-infra manifests — resources per budget on every container (Postgres ×6, Redis ×3, Kafka, Kafka Connect, Apicurio + UI, one-shot Jobs)
 - [ ] Task: budget check script — sums memory limits across `gluon-local` pods (≤ 12 Gi), every container has requests + limits
 - [ ] Task: redeploy (`bin/k8s-local-up`), all pods Ready, no OOMKilled after smoke run; re-register Debezium connectors if needed
