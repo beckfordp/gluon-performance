@@ -10,7 +10,7 @@
 ## Phase 2: Config and shared protocol (PERF-1.2)
 - [x] Task: write failing tests — `GluonConfig` parses env (base URL per service, profile), defaults for port-forward, accumulates errors for invalid URLs/unknown profile e9aae23
 - [x] Task: implement `GluonConfig` (pure: `Map[String,String] => Either[::[ConfigError], GluonConfig]`) + `Service` ADT e9aae23
-- [~] Task: `Protocols.http` — one shared `HttpProtocol` built from config
+- [x] Task: `Protocols.http` — one shared `HttpProtocol` (no base URL; requests use `GluonConfig.baseUrl`) e632653
 - [ ] Task: Conductor - User Manual Verification 'Phase 2: Config and shared protocol' (Protocol in workflow.md)
 
 ## Phase 3: Trace-linked requests (PERF-1.4)
