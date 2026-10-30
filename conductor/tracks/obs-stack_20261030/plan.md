@@ -40,10 +40,11 @@ tests, as with run-validity.
       `histogram_quantile` per service. 067f6ad
 
 ## Phase 3: Logs — ES, Kibana, Filebeat (PERF-3.2)
-- [~] Task: `check-obs-logs.sh` first: ES `gluon-logs-*` holds docs for all 8
+- [x] Task: `check-obs-logs.sh` first: ES `gluon-logs-*` holds docs for all 8
       `service.name` values, at least one with `trace_id`, and the Kibana data view
-      `gluon-logs` exists.
-- [ ] Task: Elasticsearch (single-node, heap 512m, limit ≤1.2Gi) and Kibana
+      `gluon-logs` exists. 72e99d9 (trace_id parsed from span-exporter lines:
+      app code logs nothing on /health/ready, the smoke's only endpoint)
+- [~] Task: Elasticsearch (single-node, heap 512m, limit ≤1.2Gi) and Kibana
       (LoadBalancer :5601).
 - [ ] Task: Filebeat DaemonSet (RBAC, hostPath /var/log/containers, autodiscover on
       gluon-local, JSON decode, service.name from the `app` label).
