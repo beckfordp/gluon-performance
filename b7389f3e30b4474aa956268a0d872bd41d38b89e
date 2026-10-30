@@ -1,0 +1,1 @@
+Perf 2 Phase 4 verification (Pod limits). Automated: scripts/verify-perf2-phase4.sh -> check-pod-budget PASS (21 containers, 8.31/12 Gi), order-service JAVA_OPTS MaxRAMPercentage=40, bin/run-perf SmokeSimulation exit 0, no restarts/OOMKilled. Gluon commits 30171cb, d18b184, 7fd1bf3 (user-approved). Spec amended: javaOpts 40% (user decision after off-heap measurement).
