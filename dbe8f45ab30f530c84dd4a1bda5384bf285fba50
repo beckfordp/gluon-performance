@@ -1,0 +1,1 @@
+Phase 2 verification (Config and shared protocol). Automated: scripts/verify-phase2.sh -> scalafmtCheck, GluonConfigSuite/ProfileSuite/ProtocolsSuite ran, 10 tests pass, statement coverage 92.59% (>= 80% gate). Manual walkthrough replaced by script (prompting off).
