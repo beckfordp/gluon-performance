@@ -1,0 +1,1 @@
+Phase 2 verification (Perf 3b): scripts/verify-perf3b-phase2.sh PASS — bin/obs up; all 8 scrape jobs up (8 services, cadvisor, ksm, 6 postgres, 3 redis, kafka-exporter, kafka-connect, prometheus); bin/run-perf SmokeSimulation exit 0 (valid); p99 http_server_request_duration_seconds per service 0.009-0.010s (<10s, >0). Stack 0.78Gi, namespace 8.09Gi.
