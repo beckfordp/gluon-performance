@@ -58,7 +58,19 @@ lazy val root = project
           .filter(f => f.isFile && f.getName.endsWith(".jar"))
           .map(_.getName)
     },
+    // The JVM flags gatling-sbt passes to forked runs (`show Gatling/javaOptions`),
+    // minus -Xmx (heap is sized from the pod limit via JAVA_OPTS
+    // -XX:MaxRAMPercentage) and JDK 23+ only flags (image is JDK 21).
+    Universal / javaOptions ++= Seq(
+      "-XX:+HeapDumpOnOutOfMemoryError",
+      "-XX:MaxInlineLevel=20",
+      "-XX:MaxTrivialSize=12",
+      "--enable-native-access=ALL-UNNAMED",
+      "--add-opens=java.base/java.lang=ALL-UNNAMED",
+      "--add-opens=java.base/jdk.internal.misc=ALL-UNNAMED"
+    ).map("-J" + _),
     dockerBaseImage := "eclipse-temurin:21-jre",
     Docker / packageName := "gluon-performance",
-    dockerUpdateLatest := true
+    dockerUpdateLatest := true,
+    dockerEntrypoint := Seq("/opt/docker/bin/run-simulation.sh")
   )

@@ -24,4 +24,8 @@ check "Gatling jars staged" 'ls "${libs[@]}" | grep -q "gatling-charts-highchart
 check "launcher uses io.gatling.app.Gatling" '[[ -n "$launcher" ]] && grep -q "io.gatling.app.Gatling" "$launcher"'
 check "tests jar on launcher classpath" '[[ -n "$launcher" && -n "$tests_jar" ]] && grep -q "$(basename "$tests_jar")" "$launcher"'
 
+entry=$(find target/docker/stage -path "*/opt/docker/bin/run-simulation.sh" | head -1)
+check "run-simulation.sh staged + executable" '[[ -n "$entry" && -x "$entry" ]]'
+check "Dockerfile entrypoint is run-simulation.sh" 'grep -q "run-simulation.sh" target/docker/stage/Dockerfile'
+
 [[ $fail == 0 ]] && echo "PASS: image layout" || exit 1

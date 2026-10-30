@@ -10,7 +10,7 @@
 
   <!-- One line per request: request name, status, trace id (gluon.perf.Traced). -->
   <appender name="TRACES" class="ch.qos.logback.core.FileAppender">
-    <file>target/gatling/trace-ids.log</file>
+    <file>${TRACE_LOG:-target/gatling/trace-ids.log}</file>
     <append>false</append>
     <encoder>
       <pattern>%d{HH:mm:ss.SSS} %msg%n</pattern>
