@@ -10,10 +10,10 @@ tests, as with run-validity.
       first). It sums container memory limits from `kubectl get pods -o json` for the
       obs stack and for the namespace, and fails if the stack is over 3Gi or the total is
       over 11Gi (12Gi minus Gatling's 1Gi). gluon f1a1721
-- [~] Task: `infra/k8s/observability/` skeleton: a kustomization or directory apply, a
+- [x] Task: `infra/k8s/observability/` skeleton: a kustomization or directory apply, a
       common `app.kubernetes.io/part-of: gluon-obs` label (so `down` deletes by label),
-      and a budget note in `environments/local/README.md`.
-- [ ] Task: `bin/obs up|down|status`: preflight, apply, wait, URLs, budget check.
+      and a budget note in `environments/local/README.md`. gluon c00ba21
+- [~] Task: `bin/obs up|down|status`: preflight, apply, wait, URLs, budget check.
       `scripts/check-obs-cli.sh` first; it fails on usage and preflight cases.
 - [ ] Task: Conductor - User Manual Verification 'Phase 1' (Protocol in workflow.md).
       `scripts/verify-perf3b-phase1.sh`
