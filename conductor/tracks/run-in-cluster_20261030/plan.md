@@ -19,15 +19,15 @@ Gluon-repo commits need user approval (prompting on there); perf-repo commits au
 - [x] Task: run `bin/run-perf SmokeSimulation` in-cluster — 8/8 OK, report on disk, Job gone gluon@c76367a
 - [x] Task: Conductor - User Manual Verification 'Phase 3: bin/run-perf' (Protocol in workflow.md)
 
-## Phase 4: Pod limits (PERF-2.3, gluon)
+## Phase 4: Pod limits (PERF-2.3, gluon) [checkpoint: b7389f3]
 - [x] Task: chart — default resources 250m/384Mi request, 500m/384Mi limit; `javaOpts` value → `JAVA_OPTS` env in deployment.yaml; `helm template` check (javaOpts 40%, not 75%: measured 100–180Mi off-heap — user decision) gluon@30171cb
 - [x] Task: local-infra manifests — resources per budget on every container (Postgres ×6, Redis ×3, Kafka, Kafka Connect, Apicurio + UI, one-shot Jobs) + heap env for Kafka/Connect/Apicurio gluon@d18b184
 - [x] Task: budget check script — sums memory limits across `gluon-local` pods (≤ 12 Gi), every container has requests + limits b7e090c
 - [x] Task: redeploy (`bin/k8s-local-up`), all pods Ready, no OOMKilled after smoke run; re-register Debezium connectors if needed (k8s-local-up fix: gluon@7fd1bf3)
-- [ ] Task: Conductor - User Manual Verification 'Phase 4: Pod limits' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 4: Pod limits' (Protocol in workflow.md)
 
 ## Phase 5: Run validity (PERF-2.4, gluon)
-- [ ] Task: write failing fixture tests `bin/test/run-validity-test.sh` — PASS fixture + one INVALID fixture each for CPU p95, PSI, swap growth, throttling, battery power
+- [~] Task: write failing fixture tests `bin/test/run-validity-test.sh` — PASS fixture + one INVALID fixture each for CPU p95, PSI, swap growth, throttling, battery power
 - [ ] Task: `bin/lib/run-validity.sh` — `evaluate <samples-dir>` → validity.txt + exit status (0 valid, 3 invalid)
 - [ ] Task: sampler — background `docker run --rm --pid=host alpine` loop logging every 5s; Gatling pod `cpu.stat` start/end; pmset/top capture; wired into bin/run-perf with hard cleanup; exit 3 when invalid (assertion failure keeps Gatling's code)
 - [ ] Task: run `bin/run-perf SmokeSimulation` — validity.txt next to report, all PASS
