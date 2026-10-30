@@ -54,7 +54,7 @@ tests, as with run-validity.
 - [x] Task: Conductor - User Manual Verification 'Phase 3' (Protocol in workflow.md).
       `verify-perf3b-phase3.sh` 4ab6f8e
 
-## Phase 4: Grafana + dashboards (PERF-3.3)
+## Phase 4: Grafana + dashboards (PERF-3.3) [checkpoint: a947ee2]
 - [x] Task: `check-obs-dashboards.sh` first. Through the Grafana API it checks that the
       datasource is healthy and that the 4 dashboards exist, and runs each panel's
       queries for a non-empty `service` variable. d7e5294
@@ -70,8 +70,8 @@ tests, as with run-validity.
       OOMKills). gluon 65917ed
 - [x] Task: New "Gluon infra" dashboard (Postgres, Redis, Kafka lag, Connect/Debezium). gluon 3c317fd
       (Kafka consumer-group lag went on gluon-kafka, beside purekafka's own lag.)
-- [~] Task: Conductor - User Manual Verification 'Phase 4' (Protocol in workflow.md).
-      `verify-perf3b-phase4.sh`
+- [x] Task: Conductor - User Manual Verification 'Phase 4' (Protocol in workflow.md).
+      `verify-perf3b-phase4.sh` f273b38
 
 ## Phase 5: Exit criteria + docs (PERF-3.4)
 - [ ] Task: The full exit check, `verify-perf3b-phase5.sh`:
