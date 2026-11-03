@@ -1,8 +1,8 @@
 {
   "track_id": "christmas-rush-dashboard_20261103",
   "type": "feature",
-  "status": "new",
+  "status": "in_progress",
   "created_at": "2026-11-03T13:00:00Z",
   "updated_at": "2026-11-03T13:00:00Z",
-  "description": "Perf 4b: Christmas Rush dashboard (PERF-4.12)"
+  "description": "Perf 4b: Dashboard architecture + Christmas Rush (PERF-4.12)"
 }

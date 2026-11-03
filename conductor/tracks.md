@@ -6,7 +6,7 @@ This file tracks all major tracks for the project.
 ---
 
 
-- [ ] **Track: Perf 4b: Christmas Rush dashboard (PERF-4.12)**
+- [~] **Track: Perf 4b: Dashboard architecture + Christmas Rush (PERF-4.12)**
   *Link: [./tracks/christmas-rush-dashboard_20261103/](./tracks/christmas-rush-dashboard_20261103/)*
 
 ---
