@@ -8,19 +8,33 @@ import urllib.parse
 import urllib.request
 
 GRAFANA = os.environ.get("GRAFANA_URL", "http://localhost:3000")
-DASHBOARDS = ["gluon-red", "gluon-kafka", "gluon-pods", "gluon-infra"]
+# uid -> Grafana folder (ADR 0027: 1-Overview, 2-Services, 3-Platform).
+DASHBOARDS = {
+    "gluon-christmas-rush": "1-Overview",
+    "gluon-service": "2-Services",
+    "gluon-checkout": "2-Services",
+    "gluon-dispatch": "2-Services",
+    "gluon-pods": "3-Platform",
+    "gluon-data-stores": "3-Platform",
+    "gluon-kafka": "3-Platform",
+}
 SERVICES = [f"{s}-service" for s in
             ("cart", "catalog", "fulfilment", "inventory", "order", "payment", "user", "notification")]
-# Panels that must show data once the platform has had any traffic (a smoke
-# run); the rest (retries, breakers, DLQ, lag...) are legitimately empty
-# until their event happens, so they only have to be valid queries.
+# Panels that must show data once the platform has had traffic (a smoke or
+# acceptance run); the rest (5xx, retries, breakers, DLQ, lag...) are
+# legitimately empty until their event happens, so they only have to be valid.
 MUST_HAVE_DATA = {
-    "gluon-red": ["Request Rate (by service, route)", "Server Duration p50 / p95 / p99 (by service)",
-                  "DB Query Duration p95 (by service, operation)"],
-    "gluon-pods": ["CPU (cores) vs limit", "Memory working set vs limit", "CPU throttled %"],
-    "gluon-infra": ["Postgres: connections (by db)", "Redis: memory used", "Connect: connector status",
-                    "Debezium: connected"],
-    "gluon-kafka": [],
+    "gluon-christmas-rush": ["Orders placed /s", "Checkout outcomes /s", "Fulfilment backlog by state",
+                             "Uncaptured authorizations (money held)", "Service saturation: CPU % of limit"],
+    "gluon-service": ["Request rate by route", "Server latency p50 / p95 / p99", "DB query p95 by operation",
+                      "DB pool: in use / pending", "JVM heap used vs max"],
+    "gluon-checkout": ["Checkout outcomes /s", "Authorize outcomes /s", "Inventory reservations /s"],
+    "gluon-dispatch": ["Fulfilment backlog by state", "Event age at consume p95 (SLO 2 min)",
+                       "Outbox → Kafka: Debezium behind source"],
+    "gluon-pods": ["CPU (cores) vs limit", "Memory working set vs limit", "CPU throttled %",
+                   "JVM heap used by service"],
+    "gluon-data-stores": ["Connections by db", "Memory used"],
+    "gluon-kafka": ["Connector status", "Debezium connected", "Topic write rate"],
 }
 
 
@@ -39,6 +53,7 @@ def prom(expr):
 
 def substitute(expr, services):
     return (expr.replace("$__rate_interval", "1m")
+            .replace('"$service"', '"order-service"')  # single-select: one real service
             .replace("${service:regex}", "|".join(services))
             .replace("$service", "|".join(services))
             .replace("$pod", ".*"))
@@ -54,12 +69,15 @@ def main():
     else:
         print("ok   datasource prometheus healthy")
 
-    for uid in DASHBOARDS:
+    for uid, folder in DASHBOARDS.items():
         try:
-            dash = get(f"/api/dashboards/uid/{uid}")["dashboard"]
+            found_dash = get(f"/api/dashboards/uid/{uid}")
         except urllib.error.HTTPError:
             failures.append(f"{uid}: dashboard missing")
             continue
+        dash = found_dash["dashboard"]
+        if found_dash["meta"].get("folderTitle") != folder:
+            failures.append(f"{uid}: in folder {found_dash['meta'].get('folderTitle')!r}, expected {folder!r}")
         variables = {v["name"]: v for v in dash.get("templating", {}).get("list", [])}
         services = SERVICES
         if "service" in variables:
@@ -69,7 +87,7 @@ def main():
             if missing:
                 failures.append(f"{uid}: $service variable lacks {missing}")
             services = found
-        panels = [p for p in dash.get("panels", []) if p.get("type") != "row"]
+        panels = [p for p in dash.get("panels", []) if p.get("type") not in ("row", "text")]
         empty_ok, bad = 0, 0
         for p in panels:
             data = False
