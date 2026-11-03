@@ -8,6 +8,6 @@
 - [x] Task: Conductor - User Manual Verification 'Phase 1' (Protocol in workflow.md) (a034184, scripts/verify-perf4b-phase1.sh PASS)
 
 ## Phase 2: Provisioning + live check
-- [ ] Task: Write failing check: `check_obs_dashboards.py` covers the 7 uids
-- [ ] Task: Per-folder ConfigMaps + provider `foldersFromFilesStructure`, home = overview; retire gluon-red/gluon-infra JSON; `bin/obs up`
-- [ ] Task: Conductor - User Manual Verification 'Phase 2' (Protocol in workflow.md)
+- [x] Task: Write failing check: `check_obs_dashboards.py` covers the 7 uids (16f898e)
+- [x] Task: Per-folder ConfigMaps + provider `foldersFromFilesStructure`, home = overview; retire gluon-red/gluon-infra JSON; `bin/obs up` (gluon a67f103; panel fixes 32786fe)
+- [x] Task: Conductor - User Manual Verification 'Phase 2' (Protocol in workflow.md) (cfb845f, scripts/verify-perf4b-phase2.sh PASS)
