@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# CLI check for gluon bin/obs (PERF-3.4): usage errors exit 2 with usage
-# text, and preflight refuses a wrong kubectl context or an unreachable
+# CLI check for gluon bin/obs (PERF-3.4, TD-25 profiles): usage errors exit
+# 2 with usage text, and preflight refuses a wrong kubectl context or an unreachable
 # cluster before touching anything. Uses a throwaway KUBECONFIG, so the real
 # cluster is never contacted.
 #   scripts/check-obs-cli.sh
@@ -37,11 +37,14 @@ expect() { # <name> <exit> <text in stderr> <args...>
   echo "ok   $name"
 }
 
-expect "no command" 2 "usage: bin/obs up|down|status"
-expect "unknown command" 2 "usage: bin/obs up|down|status" sideways
-expect "too many args" 2 "usage: bin/obs up|down|status" up now
-expect "help" 2 "usage: bin/obs up|down|status" -h
+expect "no command" 2 "usage: bin/obs up [metrics|logs|all] | down | status"
+expect "unknown command" 2 "usage: bin/obs up [metrics|logs|all] | down | status" sideways
+expect "too many args" 2 "usage: bin/obs up [metrics|logs|all] | down | status" up all now
+expect "unknown profile" 2 "usage: bin/obs up [metrics|logs|all] | down | status" up now
+expect "profile on down" 2 "usage: bin/obs up [metrics|logs|all] | down | status" down logs
+expect "help" 2 "usage: bin/obs up [metrics|logs|all] | down | status" -h
 KUBECONFIG="$work/other" expect "wrong context" 1 "kubectl context is not 'orbstack'" up
+KUBECONFIG="$work/other" expect "wrong context, profile" 1 "kubectl context is not 'orbstack'" up logs
 KUBECONFIG="$work/orbstack" expect "unreachable cluster" 1 "namespace gluon-local missing" status
 
 [ "$failures" = 0 ] && echo "PASS: bin/obs CLI" || { echo "$failures failure(s)"; exit 1; }

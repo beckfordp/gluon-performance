@@ -90,12 +90,15 @@ Checks: `scripts/check-image-layout.sh` (staged image contents),
 
 The observability stack is opt-in: gluon's `bin/obs up` deploys it into
 `gluon-local` (gluon `infra/k8s/observability`), and `bin/obs down` removes it.
-Bring it up before `bin/run-perf`, so Prometheus scrapes the whole run:
+Bring it up before `bin/run-perf`, so Prometheus scrapes the whole run.
+`bin/obs up` alone is the `metrics` profile (Grafana, no Kibana), the only one
+that fits beside a Gatling run; `bin/obs up logs` swaps Grafana for Kibana
+afterwards, and Filebeat ships logs to Elasticsearch in every profile:
 
 | UI | URL | What's there |
 |---|---|---|
 | Grafana | http://localhost:3000 | Dashboards in folder `gluon`: **services (RED)** (rate, 5xx, p50/p95/p99, client calls, retries, breakers, DB), **Kafka consumers** (purekafka retries/breakers/DLQ, consumer-group lag), **pods** (CPU/memory vs limit, throttled %, restarts, OOMKills), **infrastructure** (Postgres, Redis, Connect/Debezium) |
-| Kibana | http://localhost:5601 | Data view `gluon-logs`: every service's logs, with `trace_id`/`span_id` |
+| Kibana (`bin/obs up logs`) | http://localhost:5601 | Data view `gluon-logs`: every service's logs, with `trace_id`/`span_id` |
 | Prometheus | http://localhost:9092 | Raw queries, `/targets` |
 
 Grafana is anonymous Viewer (Explore works); log in as admin/admin to edit,
@@ -107,7 +110,7 @@ that request's span and log lines across services.
 
 Checks (stack up): `scripts/check-obs-targets.sh` (every scrape job up),
 `scripts/check-obs-logs.sh` (all 8 services' logs in Elasticsearch, with trace
-ids), `scripts/check-obs-dashboards.sh` (every panel query valid, core panels
+ids; Kibana part needs `bin/obs up logs`), `scripts/check-obs-dashboards.sh` (every panel query valid, core panels
 with data). `scripts/verify-perf3b-phase5.sh` runs the whole set from a cold
 start.
 

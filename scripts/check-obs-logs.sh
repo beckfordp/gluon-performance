@@ -4,7 +4,8 @@
 # each with trace-linked documents (`trace_id`, parsed from the span
 # exporter's lines, so even a smoke run's /health/ready calls are findable
 # by the trace ids Gatling logs), and Kibana has the gluon-logs data view.
-# Run with the stack up (gluon bin/obs up) and some traffic behind it.
+# Run with the stack up in the logs profile (gluon bin/obs up logs) and some
+# traffic behind it.
 #   scripts/check-obs-logs.sh
 set -euo pipefail
 
