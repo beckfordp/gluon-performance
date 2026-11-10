@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: MIT
+
 """Laptop budget check over `kubectl get pods -o json` on stdin (see check-pod-budget.sh)."""
 import json
 import os

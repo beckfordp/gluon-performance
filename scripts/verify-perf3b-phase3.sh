@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# SPDX-License-Identifier: MIT
 # Phase 3 verification for obs-stack_20261030 (PLAN.md PERF-3.2): with the
 # stack up, a smoke run's requests are findable in Elasticsearch by the
 # trace ids Gatling logged (the Gatling report -> Kibana link), and the log

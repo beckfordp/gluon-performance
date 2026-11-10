@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# SPDX-License-Identifier: MIT
 # Runs the built image locally against port-forwarded gluon-local and checks
 # the wait-for-copy protocol: report + trace ids + EXIT_CODE 0 + DONE, and the
 # container exits once COPIED appears. Assumes `sbt Docker/publishLocal` ran.

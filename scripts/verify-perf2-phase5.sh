@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# SPDX-License-Identifier: MIT
 # Performance 2 / Phase 5 (run validity) verification: fixture tests for the
 # evaluation pass, and a real in-cluster smoke run writes validity.txt next to
 # its report, judged valid, with no sampler container or Job left behind.

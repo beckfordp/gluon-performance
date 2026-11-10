@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: MIT
+
 """Fails if any container in `kubectl get pods -o json` (stdin) restarted or was OOM-killed."""
 import json
 import sys

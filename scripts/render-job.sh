@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# SPDX-License-Identifier: MIT
 # Renders k8s/perf-job.yaml to stdout.
 #   scripts/render-job.sh <job-name> <simulation> [profile]
 set -euo pipefail

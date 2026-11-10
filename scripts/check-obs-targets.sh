@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# SPDX-License-Identifier: MIT
 # Prometheus target check (PLAN.md PERF-3.1): every expected scrape job has
 # its full set of targets, all healthy. Run with the stack up (gluon
 # bin/obs up); Prometheus is on OrbStack's LoadBalancer at localhost:9092.

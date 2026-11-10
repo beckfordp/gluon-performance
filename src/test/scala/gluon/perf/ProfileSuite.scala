@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: MIT
+
 package gluon.perf
 
 class ProfileSuite extends munit.FunSuite {

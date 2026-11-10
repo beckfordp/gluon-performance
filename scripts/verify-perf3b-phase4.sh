@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# SPDX-License-Identifier: MIT
 # Phase 4 verification for obs-stack_20261030 (PLAN.md PERF-3.3): with the
 # stack up and a smoke run's traffic in Prometheus, Grafana's datasource is
 # healthy and all 4 dashboards' queries are valid, with the core panels

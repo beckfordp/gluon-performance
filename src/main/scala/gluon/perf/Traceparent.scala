@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: MIT
+
 package gluon.perf
 
 /** A sampled W3C Trace Context `traceparent` (version 00, flags 01).

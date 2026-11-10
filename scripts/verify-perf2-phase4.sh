@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# SPDX-License-Identifier: MIT
 # Performance 2 / Phase 4 (pod limits) verification: budget check passes,
 # services run with the budgeted JVM heap, an in-cluster smoke run is green,
 # and no container restarted or was OOM-killed.

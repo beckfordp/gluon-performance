@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# SPDX-License-Identifier: MIT
 # Phase 4 (smoke simulation) verification = Performance 1 exit criteria:
 # SmokeSimulation green against port-forwarded gluon-local, HTML report
 # produced, one trace-id line per service with status 200.

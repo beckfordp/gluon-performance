@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# SPDX-License-Identifier: MIT
 # Performance 2 / Phase 2 (Job manifest) verification: rendered Job accepted by
 # the API server, unsafe input rejected, README documents the in-cluster run.
 set -euo pipefail

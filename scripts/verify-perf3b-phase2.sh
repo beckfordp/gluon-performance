@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# SPDX-License-Identifier: MIT
 # Phase 2 verification for obs-stack_20261030 (PLAN.md PERF-3.1): with the
 # stack up, every scrape job is healthy; after a smoke run, every service's
 # p99 server latency (histogram_quantile over the LatencyBuckets buckets,

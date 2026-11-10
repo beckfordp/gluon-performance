@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# SPDX-License-Identifier: MIT
 # Phase 2 verification for christmas-rush-dashboard_20261103 (PLAN.md
 # PERF-4.12, gluon ADR 0027): the generated JSON is current, Grafana's home
 # dashboard is the Christmas Rush overview, and the live dashboards check

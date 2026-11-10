@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# SPDX-License-Identifier: MIT
 # Phase 2 (config + shared protocol) verification: config/profile/protocol
 # suites ran and passed, helper coverage >= 80%.
 set -euo pipefail

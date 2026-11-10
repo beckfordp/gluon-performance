@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# SPDX-License-Identifier: MIT
 # Phase 3 (trace-linked requests) verification: traceparent/trace-log suites
 # ran and passed, and the Traced DSL helper compiles with the simulations.
 # Live trace ids in a run are checked by verify-phase4.sh (smoke run).

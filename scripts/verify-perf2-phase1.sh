@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# SPDX-License-Identifier: MIT
 # Performance 2 / Phase 1 (container image) verification: unit tests green,
 # image layout correct, image runs the smoke simulation end to end.
 set -euo pipefail

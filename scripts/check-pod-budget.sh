@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# SPDX-License-Identifier: MIT
 # Laptop budget check (gluon PLAN.md "Demo, not capacity", PERF-2.3): every
 # running container in gluon-local has explicit CPU/memory requests and
 # limits, memory request = limit, and memory limits plus the Gatling Job's

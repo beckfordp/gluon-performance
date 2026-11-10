@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# SPDX-License-Identifier: MIT
 # Asserts the Docker/stage tree has what an in-cluster run needs: simulations
 # (Test classes + resources), Gatling, and an entry point that launches
 # io.gatling.app.Gatling. A munit suite can't do this: it would have to run

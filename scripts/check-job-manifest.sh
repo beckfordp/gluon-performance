@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# SPDX-License-Identifier: MIT
 # Validates the rendered Job against the live API server (no Job is created)
 # and checks render-job.sh rejects unsafe input.
 set -euo pipefail

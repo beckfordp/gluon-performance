@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# SPDX-License-Identifier: MIT
 # Phase 1 verification for christmas-rush-dashboard_20261103 (PLAN.md
 # PERF-4.12, gluon ADR 0027): the dashboard generator's tests pass (7
 # dashboards in 3 folders, panel budgets, links resolve, every dashboard has a

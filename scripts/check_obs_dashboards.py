@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: MIT
+
 """Grafana dashboards check (see check-obs-dashboards.sh). Stdlib only."""
 import json
 import os

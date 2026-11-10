@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: MIT
+
 package gluon.perf
 
 /** A named load profile (PLAN.md PERF-7.4). Injection shapes land in

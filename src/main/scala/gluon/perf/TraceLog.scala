@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: MIT
+
 package gluon.perf
 
 /** The per-request log line linking a Gatling request to its trace. */

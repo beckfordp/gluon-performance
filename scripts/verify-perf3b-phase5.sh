@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# SPDX-License-Identifier: MIT
 # Phase 5 (exit) verification for obs-stack_20261030 (PLAN.md PERF-3.4):
 # from a cold `bin/obs up` (budget check passing), a valid smoke run, every
 # Phase 2-4 check green, and `bin/obs down` returning the namespace's

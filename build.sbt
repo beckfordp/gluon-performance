@@ -1,3 +1,7 @@
+// SPDX-License-Identifier: MIT
+
+ThisBuild / licenses := Seq(License.MIT)
+
 val scala2Version = "2.13.18"
 
 val gatlingVersion = "3.16.0"
@@ -46,7 +50,9 @@ lazy val root = project
     Universal / mappings ++= {
       val compileJars = (Compile / dependencyClasspath).value.map(_.data).toSet
       val testOnlyJars =
-        (Test / dependencyClasspath).value.map(_.data).filterNot(compileJars)
+        (Test / dependencyClasspath).value
+          .map(_.data)
+          .filterNot(compileJars)
           .filter(f => f.isFile && f.getName.endsWith(".jar"))
       ((Test / packageBin).value -> s"lib/${name.value}-tests.jar") +:
         testOnlyJars.map(f => f -> s"lib/${f.getName}")
@@ -54,7 +60,9 @@ lazy val root = project
     scriptClasspath ++= {
       val compileJars = (Compile / dependencyClasspath).value.map(_.data).toSet
       s"${name.value}-tests.jar" +:
-        (Test / dependencyClasspath).value.map(_.data).filterNot(compileJars)
+        (Test / dependencyClasspath).value
+          .map(_.data)
+          .filterNot(compileJars)
           .filter(f => f.isFile && f.getName.endsWith(".jar"))
           .map(_.getName)
     },

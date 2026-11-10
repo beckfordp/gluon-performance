@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# SPDX-License-Identifier: MIT
 # Phase 1 (build, CI, remote) verification: local build green, remote set,
 # latest CI run on main green.
 set -euo pipefail

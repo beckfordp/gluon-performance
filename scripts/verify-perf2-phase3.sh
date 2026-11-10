@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# SPDX-License-Identifier: MIT
 # Performance 2 / Phase 3 (bin/run-perf) verification: an in-cluster smoke run
 # via gluon's bin/run-perf succeeds, results land on disk, no Job is left.
 set -euo pipefail

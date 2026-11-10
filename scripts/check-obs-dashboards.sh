@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# SPDX-License-Identifier: MIT
 # Grafana dashboards check (PLAN.md PERF-3.3): the Prometheus datasource is
 # healthy; the 7 generated dashboards (ADR 0027) exist in their folders;
 # every panel query is valid PromQL against the live

@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# SPDX-License-Identifier: MIT
 # Phase 1 verification for obs-stack_20261030 (PLAN.md PERF-3.4 groundwork):
 # budget helper fixtures, bin/obs CLI checks, the kustomization builds, and
 # bin/obs status/up/down run cleanly against gluon-local.

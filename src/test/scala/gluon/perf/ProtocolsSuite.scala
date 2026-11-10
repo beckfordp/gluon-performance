@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: MIT
+
 package gluon.perf
 
 import io.gatling.core.config.GatlingConfiguration

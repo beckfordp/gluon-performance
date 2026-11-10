@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# SPDX-License-Identifier: MIT
 # CLI check for gluon bin/obs (PERF-3.4, TD-25 profiles): usage errors exit
 # 2 with usage text, and preflight refuses a wrong kubectl context or an unreachable
 # cluster before touching anything. Uses a throwaway KUBECONFIG, so the real

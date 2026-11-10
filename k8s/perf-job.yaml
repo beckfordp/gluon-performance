@@ -1,3 +1,4 @@
+# SPDX-License-Identifier: MIT
 # One in-cluster simulation run (PERF-2.1), rendered by scripts/render-job.sh
 # and launched by gluon's bin/run-perf. Results stay in the pod's emptyDir
 # until run-perf copies them out (wait-for-copy, see run-simulation.sh).

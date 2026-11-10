@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# SPDX-License-Identifier: MIT
 # Image entrypoint (PERF-2.1): run one simulation, then hand its results to
 # bin/run-perf via the wait-for-copy protocol, since a finished pod can't be
 # `kubectl cp`'d from:

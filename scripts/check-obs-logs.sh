@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# SPDX-License-Identifier: MIT
 # Log pipeline check (PLAN.md PERF-3.2): Filebeat has shipped gluon-local
 # container logs to Elasticsearch's gluon-logs-* indices for all 8 services,
 # each with trace-linked documents (`trace_id`, parsed from the span
